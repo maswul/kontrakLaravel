@@ -48,7 +48,7 @@
 @endsection
 
 @section('Isi')
-  <div class="container-fluid text-sm">
+  <div class="container-fluid">
     <div class="row">
         <div class="col-md-8">
             <div class="card card-danger card-outline">

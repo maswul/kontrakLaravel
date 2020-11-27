@@ -29,7 +29,7 @@ class Pekerjaan extends Model
 
     public function jtermin()
     {
-        return $this->hasOne("App\Models\JTermin");
+        return $this->belongsTo("App\Models\JTermin");
     }
 
 

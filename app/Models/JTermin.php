@@ -72,6 +72,6 @@ class JTermin extends Model
 
     public function pekerjaan()
     {
-        return $this->belongsTo('App\Models\Pekerjaan');
+        return $this->hasOne('App\Models\Pekerjaan');
     }
 }

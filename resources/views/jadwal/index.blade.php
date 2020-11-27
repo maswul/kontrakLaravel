@@ -60,15 +60,19 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered table-striped text-sm" id="data-table">
+                        <table class="table table-bordered table-striped" id="data-table">
                             <thead>
                             <tr>
                                 <th></th>
                                 <th>Pekerjaan</th>
+                                <th>Tahun</th>
+                                <th>Kode Keg.</th>
+                                <th>Kode Rek.</th>
                                 <th>Pelaksana</th>
+                                <th>HPS</th>
                                 <th>Nego</th>
-                                <th>SPK (Kontrak)</th>
-                                <th>Akhir Pekerjaan</th>
+
+
                             </tr>
                             </thead>
                             <tbody>
@@ -83,79 +87,4 @@
     </div>
 
 
-@endsection
-
-@section('customJS')
-
-
-
-
-@endsection
-
-@section('script')
-    <script type="text/javascript">
-        $(function (){
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                }
-            });
-
-         const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 3000
-                    });
-
-            var table = $('#data-table').DataTable({
-                processing: true,
-                serverSide: true,
-                "responsive": true,
-                "autoWidth": false,
-
-                ajax: "",
-                columns: [
-                    {data: 'action', name: 'action', orderable: false, searchable: false},
-                    {data: 'pekerjaan.pekerjaan', name:'pekerjaan'},
-                    {data: 'pekerjaan.perusahaan.nama', name: 'nama'},
-                    {data: 'pekerjaan.nego', name:'nego', render: $.fn.dataTable.render.number( '.', ',', 2, 'Rp ' )},
-                    {data: 'tgl_17', name: 'tgl_17', render:function(data){
-                        return moment(data).locale('id').format('dddd, DD MMMM YYYY');
-                    }
-                    },
-                    {data: 'tgl_19', name: 'tgl_19', render:function(data){
-                        return moment(data).locale('id').format('dddd, DD MMMM YYYY');
-                    }},
-
-                ]
-            });
-
-            $('body').on('click', '.deletePerusahaan', function () {
-
-                var Customer_id = $(this).data("id");
-                confirm("Are You sure want to delete Id = " + Customer_id + "?");
-
-                $.ajax({
-                    type: "DELETE",
-                    headers: { 'X-CSRF-TOKEN' : '{{csrf_token()}}' },
-                    url: "jadwal"+'/'+Customer_id+'hapus',
-                    success: function (data) {
-                        Toast.fire({
-                            icon: 'success',
-                            title: data.success
-                        });
-                        table.draw();
-                    },
-                    error: function (data) {
-                        console.log('Error:', data);
-                        Toast.fire({
-                            icon: 'error',
-                            title: 'Ada kendala saat menghapus data!'
-                        });
-                    }
-                });
-            });
-        })
-    </script>
 @endsection

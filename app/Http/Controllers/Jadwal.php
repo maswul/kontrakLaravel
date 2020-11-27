@@ -5,57 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pekerjaan;
 use App\Models\JTermin;
-use App\Models\Perusahaan;
-use Yajra\DataTables\DataTables;
 
 class Jadwal extends Controller
 {
-    //untuk fungsi utama
+    //
     public function index(Request $request)
     {
         # code...
-        if ($request->ajax())
-        {
-            //$data = Pekerjaan::with('perusahaan')->get();
-            $data = JTermin::with('pekerjaan.perusahaan')->get();
-            return DataTables::of($data)->addIndexColumn()
-                ->addColumn('action', function ($row){
 
-                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="badge bg-primary editPerusahaan">Edit</a>';
-                    $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="badge bg-danger deletePerusahaan">Delete</a>';
-                    return $btn;
-                })->rawColumns(['action'])->make(true);
-        }
         return view('jadwal.index');
-
-
-
-
-    }
-
-    public function Coba(Request $request)
-    {
-        /*$data = Pekerjaan::with('perusahaan')->get();
-        $dt =  DataTables::of($data)->addIndexColumn()
-                ->addColumn('action', function ($row){
-
-                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="badge bg-primary editPerusahaan">Edit</a>';
-                    $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="badge bg-danger deletePerusahaan">Delete</a>';
-                    return $btn;
-                })->rawColumns(['action'])->make(true);
-
-        return $dt;*/
-        $data = Pekerjaan::with('jtermin')->get();
-        $dt =  DataTables::of($data)->addIndexColumn()
-        ->addColumn('action', function ($row){
-
-            $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="badge bg-primary editPerusahaan">Edit</a>';
-            $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="badge bg-danger deletePerusahaan">Delete</a>';
-            return $btn;
-        })->rawColumns(['action'])->make(true);
-
-
-        print_r(response()->json($data));
     }
 
     public function create(Request $request)
@@ -132,12 +90,5 @@ class Jadwal extends Controller
         );
 
         return response()->json(['success'=>'Jadwal termin telah ditambahkan']);
-    }
-
-    public function destroy($id)
-    {
-        JTermin::find($id)->delete();
-
-        return response()->json(['success'=>'Perusahaan berhasil dihapus!']);
     }
 }
