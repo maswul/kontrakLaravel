@@ -6,7 +6,6 @@ use App\Models\Perusahaan;
 use Illuminate\Http\Request;
 use App\Models\Pekerjaan;
 use Yajra\DataTables\DataTables;
-use Illuminate\Support\Facades\DB;
 
 class PekerjaanController extends Controller
 {
@@ -67,19 +66,13 @@ class PekerjaanController extends Controller
         if ($data)
         {
             $data->update($request->all());
-            $data = 'Edit data sukses';
+            $data = 'Edit sukses';
         }else{
             //add
             $xdata = $request->all();
-            $user_id = Pekerjaan::create($xdata)->id;
-
-            $db = DB::table('pekerjaans')->where('id', $user_id)->update(['perusahaan_id' => $request->perusahaan_id ]);
-
+            Pekerjaan::create($xdata);
             $data = "Tambah baru sukses";
         }
-
-        //Pekerjaan::updateOrCreate($request->all());
-
 
 
         return response()->json(['success'=>"{$data}"]);
