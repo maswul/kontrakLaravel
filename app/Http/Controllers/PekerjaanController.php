@@ -15,8 +15,13 @@ class PekerjaanController extends Controller
     {
         if ($request->ajax())
         {
+
             $data = Pekerjaan::join('perusahaans', 'pekerjaans.perusahaan_id', '=', 'perusahaans.id')
                 ->select(['pekerjaans.id','perusahaans.nama','pekerjaans.pekerjaan','pekerjaans.tahun','pekerjaans.kode_keg','pekerjaans.kode_rek','pekerjaans.hps','pekerjaans.nego']);
+
+
+
+
 
 
             return DataTables::of($data)->addIndexColumn()

@@ -182,7 +182,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered table-striped" id="data-table">
+                        <table class="table table-bordered table-striped text-sm" id="data-table">
                             <thead>
                             <tr>
                                 <th></th>
