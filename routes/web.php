@@ -26,3 +26,5 @@ Route::resource('perusahaan', PerusahaanControlleer::class);
 Route::resource('pekerjaan', PekerjaanController::class);
 
 Route::resource('jadwal', Jadwal::class);
+
+Route::get('/coba', [Jadwal::class,'coba']);
