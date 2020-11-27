@@ -54,15 +54,11 @@
             <div class="card card-danger card-outline">
                 <div class="card-header">
                     <h3 class="card-title">Daftar Perusahaan</h3>
-                    <!--<div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 300px;">
-                          <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                          <div class="input-group-append">
-                            <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                          </div>
+                    <div class="card-tools">
+                        <div class="input-group input-group-sm">
+                            <a href="{{ route("download.perusahaan") }}" role="button" class="btn btn-primary float-right">Download Data</a>
                         </div>
-                      </div>-->
+                      </div>
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered table-striped" id="data-table">

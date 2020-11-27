@@ -138,7 +138,7 @@ class Jadwal extends Controller
     {
         JTermin::find($id)->delete();
 
-        return response()->json(['success'=>'Perusahaan berhasil dihapus!']);
+        return response()->json(['success'=>'Jadwal pekerjaan berhasil dihapus!']);
     }
 
     public function edit($id)
