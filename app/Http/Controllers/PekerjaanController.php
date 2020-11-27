@@ -17,7 +17,7 @@ class PekerjaanController extends Controller
         {
 
             $data = Pekerjaan::join('perusahaans', 'pekerjaans.perusahaan_id', '=', 'perusahaans.id')
-                ->select(['pekerjaans.id','perusahaans.nama','pekerjaans.pekerjaan','pekerjaans.tahun','pekerjaans.kode_keg','pekerjaans.kode_rek','pekerjaans.hps','pekerjaans.nego']);
+                ->select(['pekerjaans.id','perusahaans.nama', 'pekerjaans.tipe AS tipe','pekerjaans.pekerjaan','pekerjaans.tahun','pekerjaans.kode_keg','pekerjaans.kode_rek','pekerjaans.hps','pekerjaans.nego']);
 
 
 
@@ -45,7 +45,7 @@ class PekerjaanController extends Controller
 
     public function store(Request $request)
     {
-        Pekerjaan::updateOrCreate(['id' => $request->Pekerjaan_id],
+        /*Pekerjaan::updateOrCreate(['id' => $request->Pekerjaan_id],
             ['perusahaan_id' => $request->perusahaan_id,
                 'program' => $request->program,
                 'kegiatan' => $request->kegiatan,
@@ -55,12 +55,29 @@ class PekerjaanController extends Controller
                 'kode_keg' => $request->kode_keg,
                 'dpa_skpd' => $request->dpa_skpd,
                 'hps' => $request->hps,
+                'tipe' => $request->tipe,
                 'penawaran' => $request->penawaran,
                 'nego' => $request->nego
             ]
-        );
+        );*/
 
-        return response()->json(['success'=>'Perusahaan aktif telah disimpan']);
+        $data = Pekerjaan::all()->find($request->Pekerjaan_id);
+
+        if ($data)
+        {
+
+
+            $data->update($request->all());
+            $data = 'Edit sukses';
+        }else{
+            //add
+            $xdata = $request->all();
+            Pekerjaan::create($xdata);
+            $data = "Tambah baru sukses";
+        }
+
+
+        return response()->json(['success'=>"{$data}"]);
 
     }
 

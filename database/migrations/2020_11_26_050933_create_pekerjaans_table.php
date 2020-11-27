@@ -19,6 +19,7 @@ class CreatePekerjaansTable extends Migration
             $table->string('program');
             $table->string('kegiatan');
             $table->string('pekerjaan');
+
             $table->year('tahun');
             $table->string('kode_rek')->default('5 2 2 21 02');
             $table->string('kode_keg')->default('10335003');

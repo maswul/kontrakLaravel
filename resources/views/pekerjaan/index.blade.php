@@ -67,6 +67,7 @@
                         <form role="form" id="PekerjaanForm" name="PekerjaanForm" >
                             @csrf
                             <input type="hidden" name="Pekerjaan_id" id="Pekerjaan_id">
+                            <input type="hidden" name="id" id="id">
                             <div class="row">
                                 <div class="col-sm-12">
                                 <div class="form-group">
@@ -84,12 +85,26 @@
 
                             </div>
                             <!-- Pekerjaan -->
-                            <div class="form-group">
-                                <label for="pekerjaan" >Pekerjaan</label>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label for="pekerjaan" >Pekerjaan</label>
 
-                                    <input type="text" class="form-control" id="pekerjaan" name="pekerjaan" placeholder="Pekerjaan" required="">
+                                            <input type="text" class="form-control" id="pekerjaan" name="pekerjaan" placeholder="Pekerjaan" required="">
 
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="tipe">Tipe Pekerjaan</label>
+                                        <select id="tipe" class="form-control" name="tipe">
+                                            <option value="1">Konsultansi</option>
+                                            <option value="2">Fisik</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
+
 
                             <!-- Tahun Kode rek dll -->
                             <div class="row">
@@ -187,6 +202,7 @@
                             <tr>
                                 <th></th>
                                 <th>Pekerjaan</th>
+                                <th>Tipe Pekerjaan</th>
                                 <th>Tahun</th>
                                 <th>Kode Keg.</th>
                                 <th>Kode Rek.</th>
@@ -248,6 +264,14 @@
                 columns: [
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                     {data: 'pekerjaan', name: 'pekerjaans.pekerjaan'},
+                    {data: 'tipe', name: 'tipe', render: function (data) {
+
+                        if (data == 1){
+                            return 'Konsultansi';
+                        }else{
+                            return 'Fisik';
+                        }
+                     }},
                     {data: 'tahun', name: 'pekerjaans.tahun'},
                     {data: 'kode_keg', name: 'pekerjaans.kode_keg'},
                     {data: 'kode_rek', name: 'pekerjaans.kode_rek'},
@@ -304,6 +328,7 @@
                 e.preventDefault();
 
                 $("#Pekerjaan_id").val('');
+                $("#id").val('');
                 $("#PekerjaanForm").trigger('reset');
                 $("#simpan").html("Simpan")
                 $("#modal-lg").modal('show');
@@ -314,6 +339,7 @@
                 $.get("pekerjaan" + "/" + Perusahaan_id + "/edit", function (data){
                     $("#PekerjaanForm").trigger('reset');
                     $("#Pekerjaan_id").val(data.id);
+                    $("#id").val(data.id);
                     $("#program").val(data.program);
                     $("#kegiatan").val(data.kegiatan);
                     $("#pekerjaan").val(data.pekerjaan);
@@ -325,6 +351,7 @@
                     $("#nego").val(data.nego);
                     $("#dpa_skpd").val(data.dpa_skpd);
                     $("#perusahaan_id").val(data.perusahaan_id);
+                    $("#tipe").val(data.tipe);
                     $("#simpan").html('Update');
                     $("#modal-lg").modal('show');
                 });

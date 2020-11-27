@@ -18,6 +18,7 @@ class Pekerjaan extends Model
         'kode_keg',
         'dpa_skpd',
         'hps',
+        'tipe',
         'penawaran',
         'nego'
         ];
