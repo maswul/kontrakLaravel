@@ -118,19 +118,19 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label>HPS</label>
-                                        <input type="text"  class="form-control" id="hps" name="hps" placeholder="Hps" required="">
+                                        <input type="text"  class="form-control" id="hps" name="hps"  required="" >
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label>Penawaran</label>
-                                        <input type="text"  class="form-control" id="penawaran" name="penawaran" placeholder="Penawaran" required="">
+                                        <input type="text"  class="form-control" id="penawaran" name="penawaran"  required="" >
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label>Nego</label>
-                                        <input type="text"  class="form-control" id="nego" name="nego" placeholder="Nego" required="">
+                                        <input type="text"  class="form-control" id="nego" name="nego" required="" >
                                     </div>
                                 </div>
                             </div>
@@ -212,7 +212,8 @@
 @endsection
 
 @section('customJS')
-
+    <script src="{{ asset("plugins/inputmask/jquery.inputmask.min.js")}}"></script>
+    <script src="{{ asset("plugins/inputmask/bindings/inputmask.binding.js")}}"></script>
 @endsection
 
 @section('script')
@@ -225,6 +226,9 @@
             });
 
             //inputMASK
+            $("#hps").inputmask('currency', {autoUnmask: true});
+            $("#penawaran").inputmask('currency', {autoUnmask: true});
+            $("#nego").inputmask('currency', {autoUnmask: true});
 
 
             const Toast = Swal.mixin({
@@ -257,6 +261,16 @@
             $('#simpan').click(function (e){
                 e.preventDefault();
                 $(this).html('Sending');
+
+                var hps = $("#hps");
+                if (hps.inputmask) {
+                    hps.inputmask('unmaskedvalue');
+                }
+
+                $("#penawaran").inputmask('unmaskedvalue');
+                $("#nego").inputmask('unmaskedvalue');
+
+
                 $.ajax({
                     data: $("#PekerjaanForm").serialize(),
                     url: "",
@@ -283,6 +297,7 @@
 
                     }
                 });
+
             });
 
             $("#tambahbtn").click(function (e){
@@ -307,7 +322,7 @@
                     $("#kode_rek").val(data.kode_rek);
                     $("#hps").val(data.hps);
                     $("#penawaran").val(data.penawaran);
-                    $("#nego").val(data.penawaran);
+                    $("#nego").val(data.nego);
                     $("#dpa_skpd").val(data.dpa_skpd);
                     $("#perusahaan_id").val(data.perusahaan_id);
                     $("#simpan").html('Update');

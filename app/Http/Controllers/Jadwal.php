@@ -140,4 +140,17 @@ class Jadwal extends Controller
 
         return response()->json(['success'=>'Perusahaan berhasil dihapus!']);
     }
+
+    public function edit($id)
+    {
+        $Jt = JTermin::find($id);
+
+
+        $data['db'] = $Jt;
+        $data['datas'] = Pekerjaan::find($Jt->pekerjaan_id);
+
+
+
+        return view('jadwal.edit', $data);
+    }
 }

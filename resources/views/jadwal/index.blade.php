@@ -156,6 +156,12 @@
                     }
                 });
             });
+
+            $('body').on('click', '.editPerusahaan', function (){
+                var Perusahaan_id = $(this).data('id');
+                window.location.href = "jadwal" + "/" + Perusahaan_id + "/edit";
+
+            });
         })
     </script>
 @endsection
