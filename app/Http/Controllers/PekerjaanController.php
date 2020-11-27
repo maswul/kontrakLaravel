@@ -65,8 +65,6 @@ class PekerjaanController extends Controller
 
         if ($data)
         {
-
-
             $data->update($request->all());
             $data = 'Edit sukses';
         }else{
