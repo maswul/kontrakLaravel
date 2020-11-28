@@ -22,6 +22,8 @@ class exportEx extends Controller
     {
         # code...
 
+        
+
         $db = JTermin::with('pekerjaan.perusahaan')->get()->find($id);
 
         $file = storage_path('app/template/01_ringkasan.xls');

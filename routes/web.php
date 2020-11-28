@@ -19,7 +19,7 @@ use App\Http\Controllers\exportEx;
 */
 
 Route::get('/', function () {
-    redirect('/pekerjaan');
+    return redirect('/pekerjaan');
 });
 
 //Route::get('/perusahaan', [PerusahaanControlleer::class,'index']);

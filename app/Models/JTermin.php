@@ -9,6 +9,8 @@ class JTermin extends Model
 {
     use HasFactory;
 
+
+
     protected $fillable = [
         "pekerjaan_id",
         "no_spk",
