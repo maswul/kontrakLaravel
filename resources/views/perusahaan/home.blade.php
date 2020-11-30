@@ -210,26 +210,42 @@
             $('body').on('click', '.deletePerusahaan', function () {
 
                 var Customer_id = $(this).data("id");
-                confirm("Are You sure want to delete !");
+                Alt.alternative({
+                status: "question",
+                title: "Are You Sure",
+                text: "Your data will delete permanently",
+                showCancelButton: true,
+                }).then((res) => {
+                    if(res) {
+                       
+                        $.ajax({
+                            type: "DELETE",
+                            url: "perusahaan"+'/'+Customer_id,
+                            success: function (data) {
+                                Alt.alternative({
+                                    status: "success",
+                                    title: "Deleted",
+                                    text: "Data deleted permanently"
+                                })
+                                table.draw();
+                            },
+                            error: function (data) {
+                                console.log('Error:', data);
+                                Toast.fire({
+                                    icon: 'error',
+                                    title: 'Ada kendala saat menghapus data!'
+                                });
+                            }
+                        });
 
-                $.ajax({
-                    type: "DELETE",
-                    url: "perusahaan"+'/'+Customer_id,
-                    success: function (data) {
-                        Toast.fire({
-                            icon: 'success',
-                            title: data.success
-                        });
-                        table.draw();
-                    },
-                    error: function (data) {
-                        console.log('Error:', data);
-                        Toast.fire({
-                            icon: 'error',
-                            title: 'Ada kendala saat menghapus data!'
-                        });
+                        
                     }
-                });
+                    
+                })
+
+
+
+                
             });
         });
     </script>

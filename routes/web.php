@@ -6,6 +6,8 @@ use App\Http\Controllers\PekerjaanController;
 use App\Http\Controllers\Jadwal;
 use App\Http\Controllers\CetakController;
 use App\Http\Controllers\exportEx;
+use App\Http\Controllers\LelangController;
+use App\Models\Lelang;
 use App\Models\Perusahaan;
 use App\Models\Pekerjaan;
 
@@ -47,13 +49,17 @@ Route::get('kontrak/{id}', function ($id) {
 
 Route::get('download/perusahaan', [exportEx::class,'dlperusahaan'])->name('download.perusahaan');
 
-Route::any('tanggal/{id}', function ($id) {
+Route::get('tanggal/{id}', function ($id) {
     #id merupkan perusahaan
-    $data['db'] = Pekerjaan::find($id);
     if (Pekerjaan::find($id)->count() > 0)
-    {   
+    {   $data['pekerjaan_id'] = $id;
+        $data['pekerjaan_tipe'] = Pekerjaan::find($id)->tipe;
+        $lelang = Lelang::with('pekerjaan')->get()->find('$id');
+        //print_r($lelang);
         return view('jadwalperencanaan', $data);
     }else{
         return redirect('pekerjaan');
     }
 })->name('lelang');
+
+Route::post('tanggal/{$id', [LelangController::class, 'store'])->name('lelang.simpan');

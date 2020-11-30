@@ -19,7 +19,9 @@
 @section('Isi')
 
 <div class="container-fluid">
-    <form name="dataForm" id="dataForm" target="" method="post">
+    <form name="dataForm" id="dataForm" target="{{ route('lelang.simpan') }}" method="post">
+        <input type="hidden" name="pekerjaan_id" id="pekerjaan_id" value="{{ $pekerjaan_id  }}">
+        <input type="hidden" name="pekerjaan_tipe" id="pekerjaan_tipe" value="{{ $pekerjaan_tipe }}">
     <div class="col-md-12">
         <div class="card card-primary card-tabs">
             <div class="card-header p-0 pt-1">
@@ -37,14 +39,33 @@
             </div>
             <div class="card-body">
                
-                    <input type="hidden" name="Pekerjaan_id" value="{{ $pekerjaan_id ?? '' }}">
+                    
                     <div class="tab-content" id="custom-tabs-one-tabContent">
                     
                         <div class="tab-pane fade" id="lelang-tab-home" role="tabpanel" aria-labelledby="lelang-home-tab">
                             @include('jadwal.formLelang')
                         </div>
                         <div class="tab-pane fade  show active" id="termin-tab-home" role="tabpanel" aria-labelledby="termin-home-tab">
-                            @include('jadwal.formFisik')
+                            @switch($pekerjaan_tipe)
+                                @case(1)
+                                    {{-- Jasa Konsultasi --}}
+                                    
+                                    @break
+                                @case(2)
+                                    {{-- Fisik --}}
+                                    @include('jadwal.formFisik')
+                                    @break
+                                @case(3)
+                                    {{-- perencanaan --}}
+                                    @include('jadwal.formTermin')
+                                    @break
+                                @default
+                                    {{-- Pengawasan --}}
+                                    @include('jadwal.formPengawasan')
+                                    @break
+                                    
+                            @endswitch
+                            
                         </div>
                         
                     </div>
@@ -84,7 +105,9 @@
         //Datemask dd/mm/yyyy
         $('[data-mask]').inputmask()
 
-        
+        $("#simpan").click(function () {
+            $("#dataForm").submit();
+        })
         
     });
 </script>

@@ -151,9 +151,9 @@
         <!-- /.modal -->
         <div class="row">
             <div class="col-md-12">
-                @if (session('status'))
+                @if (session('pesan'))
                 <div id="alert-ku" class="alert alert-warning text-center" role="alert">
-                    Content
+                    {{ session('pesan') }}
                 </div>
                 @endif
             </div>
@@ -361,10 +361,11 @@
                             headers: { 'X-CSRF-TOKEN' : '{{csrf_token()}}' },
                             url: "pekerjaan"+'/'+Customer_id+'hapus',
                             success: function (data) {
-                                Toast.fire({
-                                    icon: 'success',
-                                    title: data.success
-                                });
+                                Alt.alternative({
+                                    status: "success",
+                                    title: "Deleted",
+                                    text: "Data deleted permanently"
+                                })
                                 table.draw();
                             },
                             error: function (data) {
@@ -377,11 +378,7 @@
                             
                         });
 
-                        Alt.alternative({
-                            status: "success",
-                            title: "Deleted",
-                            text: "Data deleted permanently"
-                        })
+                        
                     }
                     
                 })

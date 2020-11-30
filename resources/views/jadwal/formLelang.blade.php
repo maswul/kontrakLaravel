@@ -9,7 +9,7 @@
     </tr>
     </thead>
     <tbody>
-        <input type="hidden" name="lelang_id" value="{{ $lelang_id ?? '' }}">
+        <input type="hidden" name="lelang_id" id="lelang_id" value="{{ $lelang_id ?? '' }}">
         <tr>
             <td></td>
             <td>BA Hasil Penelitian Dokumen data Perusahaan</td>

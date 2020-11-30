@@ -134,6 +134,99 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Lelang
+ *
+ * @property int $id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $tgl_0
+ * @property string|null $tgl_1
+ * @property string|null $no_1
+ * @property string|null $tgl_2
+ * @property string|null $no_2
+ * @property string|null $tgl_3
+ * @property string|null $no_3
+ * @property string|null $tgl_4
+ * @property string|null $no_4
+ * @property string|null $tgl_5
+ * @property string|null $no_5
+ * @property string|null $tgl_6
+ * @property string|null $no_6
+ * @property string|null $tgl_7
+ * @property string|null $no_7
+ * @property string|null $tgl_8
+ * @property string|null $no_8
+ * @property string|null $tgl_9
+ * @property string|null $no_9
+ * @property string|null $tgl_10
+ * @property string|null $no_10
+ * @property string|null $tgl_11
+ * @property string|null $no_11
+ * @property string|null $tgl_12
+ * @property string|null $no_12
+ * @property string|null $tgl_13
+ * @property string|null $no_13
+ * @property string|null $tgl_14
+ * @property string|null $no_14
+ * @property string|null $tgl_15
+ * @property string|null $no_15
+ * @property string|null $tgl_16
+ * @property string|null $tgl_17
+ * @property string|null $no_17
+ * @property string|null $tgl_18
+ * @property string|null $no_18
+ * @property string|null $tgl_19
+ * @property int $pekerjaan_id
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereNo1($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereNo10($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereNo11($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereNo12($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereNo13($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereNo14($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereNo15($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereNo17($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereNo18($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereNo2($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereNo3($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereNo4($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereNo5($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereNo6($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereNo7($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereNo8($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereNo9($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang wherePekerjaanId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereTgl0($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereTgl1($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereTgl10($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereTgl11($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereTgl12($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereTgl13($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereTgl14($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereTgl15($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereTgl16($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereTgl17($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereTgl18($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereTgl19($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereTgl2($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereTgl3($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereTgl4($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereTgl5($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereTgl6($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereTgl7($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereTgl8($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereTgl9($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lelang whereUpdatedAt($value)
+ */
+	class Lelang extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Pekerjaan
  *
  * @property int $id
@@ -153,6 +246,9 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\JTermin|null $jtermin
  * @property-read \App\Models\Perusahaan $perusahaan
+ * @property-read \App\Models\TerminFisik|null $terminfisik
+ * @property-read \App\Models\TerminPengawasan|null $terminpengawasan
+ * @property-read \App\Models\TerminPerencanaan|null $terminperencanaan
  * @method static \Illuminate\Database\Eloquent\Builder|Pekerjaan newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Pekerjaan newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Pekerjaan query()
@@ -204,6 +300,146 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Perusahaan whereUpdatedAt($value)
  */
 	class Perusahaan extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\TerminFisik
+ *
+ * @property int $id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $termin_tgl_1
+ * @property string|null $termin_tgl_2
+ * @property string|null $termin_tgl_3
+ * @property string|null $termin_no_3
+ * @property string|null $termin_tgl_4
+ * @property string|null $termin_no_4
+ * @property string|null $termin_tgl_5
+ * @property string|null $termin_no_5
+ * @property string|null $termin_tgl_6
+ * @property string|null $termin_no_6
+ * @property string|null $termin_tgl_7
+ * @property string|null $termin_no_7
+ * @property string|null $termin_tgl_8
+ * @property string|null $termin_no_8
+ * @property int $pekerjaan_id
+ * @property-read \App\Models\Pekerjaan $pekerjaan
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminFisik newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminFisik newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminFisik query()
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminFisik whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminFisik whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminFisik wherePekerjaanId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminFisik whereTerminNo3($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminFisik whereTerminNo4($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminFisik whereTerminNo5($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminFisik whereTerminNo6($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminFisik whereTerminNo7($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminFisik whereTerminNo8($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminFisik whereTerminTgl1($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminFisik whereTerminTgl2($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminFisik whereTerminTgl3($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminFisik whereTerminTgl4($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminFisik whereTerminTgl5($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminFisik whereTerminTgl6($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminFisik whereTerminTgl7($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminFisik whereTerminTgl8($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminFisik whereUpdatedAt($value)
+ */
+	class TerminFisik extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\TerminPengawasan
+ *
+ * @property int $id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $termin_tgl_1
+ * @property string|null $termin_tgl_2
+ * @property string|null $termin_no_2
+ * @property string|null $termin_tgl_3
+ * @property string|null $termin_no_3
+ * @property string|null $termin_tgl_4
+ * @property string|null $termin_no_4
+ * @property string|null $termin_tgl_5
+ * @property string|null $termin_no_5
+ * @property string|null $termin_tgl_6
+ * @property string|null $termin_no_6
+ * @property int $pekerjaan_id
+ * @property-read \App\Models\Pekerjaan $pekerjaan
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPengawasan newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPengawasan newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPengawasan query()
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPengawasan whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPengawasan whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPengawasan wherePekerjaanId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPengawasan whereTerminNo2($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPengawasan whereTerminNo3($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPengawasan whereTerminNo4($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPengawasan whereTerminNo5($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPengawasan whereTerminNo6($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPengawasan whereTerminTgl1($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPengawasan whereTerminTgl2($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPengawasan whereTerminTgl3($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPengawasan whereTerminTgl4($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPengawasan whereTerminTgl5($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPengawasan whereTerminTgl6($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPengawasan whereUpdatedAt($value)
+ */
+	class TerminPengawasan extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\TerminPerencanaan
+ *
+ * @property int $id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $termin_tgl_1
+ * @property string|null $termin_tgl_2
+ * @property string|null $termin_no_2
+ * @property string|null $termin_tgl_3
+ * @property string|null $termin_tgl_4
+ * @property string|null $termin_tgl_5
+ * @property string|null $termin_no_5
+ * @property string|null $termin_tgl_6
+ * @property string|null $termin_no_6
+ * @property string|null $termin_tgl_7
+ * @property string|null $termin_no_7
+ * @property string|null $termin_tgl_8
+ * @property string|null $termin_no_8
+ * @property string|null $termin_tgl_9
+ * @property string|null $termin_no_9
+ * @property int $pekerjaan_id
+ * @property-read \App\Models\Pekerjaan $pekerjaan
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPerencanaan newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPerencanaan newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPerencanaan query()
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPerencanaan whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPerencanaan whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPerencanaan wherePekerjaanId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPerencanaan whereTerminNo2($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPerencanaan whereTerminNo5($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPerencanaan whereTerminNo6($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPerencanaan whereTerminNo7($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPerencanaan whereTerminNo8($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPerencanaan whereTerminNo9($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPerencanaan whereTerminTgl1($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPerencanaan whereTerminTgl2($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPerencanaan whereTerminTgl3($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPerencanaan whereTerminTgl4($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPerencanaan whereTerminTgl5($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPerencanaan whereTerminTgl6($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPerencanaan whereTerminTgl7($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPerencanaan whereTerminTgl8($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPerencanaan whereTerminTgl9($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TerminPerencanaan whereUpdatedAt($value)
+ */
+	class TerminPerencanaan extends \Eloquent {}
 }
 
 namespace App\Models{
