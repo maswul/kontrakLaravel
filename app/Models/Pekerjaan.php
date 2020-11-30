@@ -41,5 +41,20 @@ class Pekerjaan extends Model
         return $this->hasOne("App\Models\JTermin");
     }
 
+    public function terminfisik()
+    {
+        return $this->hasOne("App\Models\TerminFisik");
+    }
+
+    public function terminperencanaan()
+    {
+        return $this->hasOne("App\Models\TerminPerencanaan");
+    }
+
+    public function terminpengawasan()
+    {
+        return $this->hasOne("App\Models\TerminPengawasan");
+    }
+
 
 }

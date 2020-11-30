@@ -4,48 +4,8 @@
 @section('JudulAtas','Daftar Perusahaan Aktif')
 @section('linkJudulAtas','Perusahaan')
 
-@section('sidebar')
-<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-    <!-- Add icons to the links using the .nav-icon class
-         with font-awesome or any other icon font library -->
-    <li class="nav-item has-treeview">
-      <a href="#" class="nav-link">
-        <i class="nav-icon fas fa-tachometer-alt"></i>
-        <p>
-          Dashboard
-          <i class="right fas fa-angle-left"></i>
-        </p>
-      </a>
-      <ul class="nav nav-treeview">
-        <li class="nav-item">
-          <a href="{{url("pekerjaan")}}" class="nav-link">
-            <i class="far fa-circle nav-icon"></i>
-            <p>Pekerjaan</p>
-          </a>
-        </li>
-          <li class="nav-item">
-              <a href="{{url("jadwal")}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Jadwal</p>
-              </a>
-          </li>
-          <li class="nav-item">
-              <a href="{{url("cetak")}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Cetak</p>
-              </a>
-          </li>
-      </ul>
-    </li>
-    <li class="nav-item">
-      <a href="{{url("perusahaan")}}" class="nav-link active">
-        <i class="nav-icon fas fa-building"></i>
-        <p>Perusahaan</p>
-      </a>
-    </li>
-  </ul>
-
-@endsection
+@section('menu_kontrak','active menu-open')
+@section('nav_perusahaan', 'active')
 
 @section('Isi')
   <div class="container-fluid text-sm">
@@ -56,7 +16,9 @@
                     <h3 class="card-title">Daftar Perusahaan</h3>
                     <div class="card-tools">
                         <div class="input-group input-group-sm">
-                            <a href="{{ route("download.perusahaan") }}" role="button" class="btn btn-primary float-right">Download Data</a>
+                            @if ($count > 0)
+                            <a href="{{ route("download.perusahaan") }}" role="button" class="btn btn-primary float-right">Download Data</a>    
+                            @endif
                         </div>
                       </div>
                 </div>

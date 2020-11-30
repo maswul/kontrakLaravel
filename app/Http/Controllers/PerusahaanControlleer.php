@@ -23,8 +23,10 @@ class PerusahaanControlleer extends Controller
                     return $btn;
                 })->rawColumns(['action'])->make(true);
         }
-
-        $datas = array("request" => $request);
+        
+        $datas = array("request" => $request,
+                    "count" => Perusahaan::get()->count());
+        
         return view("perusahaan.home", $datas);
     }
 

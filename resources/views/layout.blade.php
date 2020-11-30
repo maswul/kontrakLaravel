@@ -73,7 +73,35 @@
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
-          @yield('sidebar')
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item has-treeview @yield('menu_kontrak')">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Kontrak
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{url("pekerjaan")}}" class="nav-link @yield('nav_pekerjaan')">
+                  <i class="far fa-people-arrows nav-icon"></i>
+                  <p>Pekerjaan</p>
+                </a>
+              </li>
+                <li class="nav-item">
+                    <a href="{{url("perusahaan")}}" class="nav-link @yield('nav_perusahaan')" >
+                        <i class="far  fa-building nav-icon "></i>
+                        <p>Perusahaan</p>
+                    </a>
+                </li>
+            </ul>
+            
+          </li>
+         
+        </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>

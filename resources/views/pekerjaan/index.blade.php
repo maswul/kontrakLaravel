@@ -8,48 +8,8 @@
 
 @endsection
 
-@section('sidebar')
-    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <!-- Add icons to the links using the .nav-icon class
-             with font-awesome or any other icon font library -->
-        <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>
-                    Dashboard
-                    <i class="right fas fa-angle-left"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{{url("pekerjaan")}}" class="nav-link active">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Pekerjaan</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{url("jadwal")}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Jadwal</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{url("cetak")}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Cetak</p>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="nav-item">
-            <a href="{{url("perusahaan")}}" class="nav-link">
-                <i class="nav-icon fas fa-building"></i>
-                <p>Perusahaan</p>
-            </a>
-        </li>
-    </ul>
-
-@endsection
+@section('menu_kontrak','active menu-open')
+@section('nav_pekerjaan', 'active')
 
 @section('Isi')
     <div class="container-fluid">
@@ -100,6 +60,8 @@
                                         <select id="tipe" class="form-control" name="tipe">
                                             <option value="1">Konsultansi</option>
                                             <option value="2">Fisik</option>
+                                            <option value="3">Perencanaan / Pengawasan</option>
+                                            
                                         </select>
                                     </div>
                                 </div>
@@ -268,6 +230,8 @@
 
                         if (data == 1){
                             return 'Konsultansi';
+                        }else if(data == 3){
+                            return 'Perencanaan / Pengawasan';
                         }else{
                             return 'Fisik';
                         }
