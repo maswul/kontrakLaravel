@@ -7,6 +7,7 @@ use App\Http\Controllers\Jadwal;
 use App\Http\Controllers\CetakController;
 use App\Http\Controllers\exportEx;
 use App\Models\Perusahaan;
+use App\Models\Pekerjaan;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,8 +49,8 @@ Route::get('download/perusahaan', [exportEx::class,'dlperusahaan'])->name('downl
 
 Route::any('tanggal/{id}', function ($id) {
     #id merupkan perusahaan
-    $data['db'] = Perusahaan::find($id);
-    if (Perusahaan::find($id)->count() > 0)
+    $data['db'] = Pekerjaan::find($id);
+    if (Pekerjaan::find($id)->count() > 0)
     {   
         return view('jadwalperencanaan', $data);
     }else{

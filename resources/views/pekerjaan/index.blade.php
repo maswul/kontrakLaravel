@@ -149,6 +149,15 @@
             <!-- /.modal-dialog -->
         </div>
         <!-- /.modal -->
+        <div class="row">
+            <div class="col-md-12">
+                @if (session('status'))
+                <div id="alert-ku" class="alert alert-warning text-center" role="alert">
+                    Content
+                </div>
+                @endif
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-md-12">
@@ -205,6 +214,10 @@
             });
 
             $('body').tooltip({selector: '[data-toggle="tooltip"]'});
+
+            $("#alert-ku").fadeTo(1000, 500).slideUp(500, function(){
+                $("#alert-ku").slideUp(500);
+            });
 
             //inputMASK
             $("#hps").inputmask('currency', {autoUnmask: true});
@@ -335,28 +348,44 @@
             $('body').on('click', '.deletePerusahaan', function () {
 
                 var Customer_id = $(this).data("id");
-                confirm("Are You sure want to delete !");
 
-                $.ajax({
-                    type: "DELETE",
-                    headers: { 'X-CSRF-TOKEN' : '{{csrf_token()}}' },
-                    url: "pekerjaan"+'/'+Customer_id+'hapus',
-                    success: function (data) {
-                        Toast.fire({
-                            icon: 'success',
-                            title: data.success
+                Alt.alternative({
+                status: "question",
+                title: "Are You Sure",
+                text: "Your data will delete permanently",
+                showCancelButton: true,
+                }).then((res) => {
+                    if(res) {
+                        $.ajax({
+                            type: "DELETE",
+                            headers: { 'X-CSRF-TOKEN' : '{{csrf_token()}}' },
+                            url: "pekerjaan"+'/'+Customer_id+'hapus',
+                            success: function (data) {
+                                Toast.fire({
+                                    icon: 'success',
+                                    title: data.success
+                                });
+                                table.draw();
+                            },
+                            error: function (data) {
+                                console.log('Error:', data);
+                                Toast.fire({
+                                    icon: 'error',
+                                    title: 'Ada kendala saat menghapus data!'
+                                });
+                            }
+                            
                         });
-                        table.draw();
-                    },
-                    error: function (data) {
-                        console.log('Error:', data);
-                        Toast.fire({
-                            icon: 'error',
-                            title: 'Ada kendala saat menghapus data!'
-                        });
+
+                        Alt.alternative({
+                            status: "success",
+                            title: "Deleted",
+                            text: "Data deleted permanently"
+                        })
                     }
-                });
-            });
+                    
+                })
+            })
 
 
         });

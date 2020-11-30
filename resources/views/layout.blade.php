@@ -170,6 +170,9 @@
 <!-- AdminLTE App -->
 <script src="{{ asset("dist/js/adminlte.min.js") }}"></script>
 <!-- AdminLTE for demo purposes -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.3/lottie.min.js"></script>
+
+<script src="{{ asset("perintah/alt-alert.min.js") }}"></script>
 
 @yield('customJS')
 
