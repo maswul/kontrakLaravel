@@ -28,7 +28,7 @@ class Pekerjaan extends Model
      *
      * @var array
      */
-    protected $guarded = ['id','created_at','updated_at','perusahaan_id','_token'];
+    protected $guarded = ['id','_token'];
 
 
     public function perusahaan()

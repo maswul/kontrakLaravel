@@ -60,7 +60,8 @@
                                         <select id="tipe" class="form-control" name="tipe">
                                             <option value="1">Konsultansi</option>
                                             <option value="2">Fisik</option>
-                                            <option value="3">Perencanaan / Pengawasan</option>
+                                            <option value="3">Perencanaan</option>
+                                            <option value="4">Pengawasan</option>
                                             
                                         </select>
                                     </div>
@@ -203,6 +204,8 @@
                 }
             });
 
+            $('body').tooltip({selector: '[data-toggle="tooltip"]'});
+
             //inputMASK
             $("#hps").inputmask('currency', {autoUnmask: true});
             $("#penawaran").inputmask('currency', {autoUnmask: true});
@@ -231,8 +234,11 @@
                         if (data == 1){
                             return 'Konsultansi';
                         }else if(data == 3){
-                            return 'Perencanaan / Pengawasan';
-                        }else{
+                            return 'Perencanaan';
+                        }else if(data == 4){
+                            return 'Pengawasan';
+                        }
+                        else{
                             return 'Fisik';
                         }
                      }},
@@ -319,6 +325,11 @@
                     $("#simpan").html('Update');
                     $("#modal-lg").modal('show');
                 });
+            });
+
+            $('body').on('click', '.jadwalPerusahaan', function () {
+                var Perusahaan_id = $(this).data('id');
+                window.location.href = "tanggal/" + Perusahaan_id;
             });
 
             $('body').on('click', '.deletePerusahaan', function () {

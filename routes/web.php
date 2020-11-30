@@ -6,6 +6,7 @@ use App\Http\Controllers\PekerjaanController;
 use App\Http\Controllers\Jadwal;
 use App\Http\Controllers\CetakController;
 use App\Http\Controllers\exportEx;
+use App\Models\Perusahaan;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,3 +45,14 @@ Route::get('kontrak/{id}', function ($id) {
 })->name('cetak.kontrak');
 
 Route::get('download/perusahaan', [exportEx::class,'dlperusahaan'])->name('download.perusahaan');
+
+Route::any('tanggal/{id}', function ($id) {
+    #id merupkan perusahaan
+    $data['db'] = Perusahaan::find($id);
+    if (Perusahaan::find($id)->count() > 0)
+    {   
+        return view('jadwalperencanaan', $data);
+    }else{
+        return redirect('pekerjaan');
+    }
+})->name('lelang');

@@ -16,21 +16,21 @@ class CreateTerminPerencanaansTable extends Migration
         Schema::create('termin_perencanaans', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string("tgl_1")->nullable();
-            $table->string("tgl_2")->nullable();
-            $table->string("no_2")->nullable();
-            $table->string("tgl_3")->nullable();
-            $table->string("tgl_4")->nullable();
-            $table->string("tgl_5")->nullable();
-            $table->string("no_5")->nullable();
-            $table->string("tgl_6")->nullable();
-            $table->string("no_6")->nullable();
-            $table->string("tgl_7")->nullable();
-            $table->string("no_7")->nullable();
-            $table->string("tgl_8")->nullable();
-            $table->string("no_8")->nullable();
-            $table->string("tgl_9")->nullable();
-            $table->string("no_9")->nullable();
+            $table->date("termin_tgl_1")->nullable();
+            $table->date("termin_tgl_2")->nullable();
+            $table->string("termin_no_2")->nullable();
+            $table->date("termin_tgl_3")->nullable();
+            $table->date("termin_tgl_4")->nullable();
+            $table->date("termin_tgl_5")->nullable();
+            $table->string("termin_no_5")->nullable();
+            $table->date("termin_tgl_6")->nullable();
+            $table->string("termin_no_6")->nullable();
+            $table->date("termin_tgl_7")->nullable();
+            $table->string("termin_no_7")->nullable();
+            $table->date("termin_tgl_8")->nullable();
+            $table->string("termin_no_8")->nullable();
+            $table->date("termin_tgl_9")->nullable();
+            $table->string("termin_no_9")->nullable();
             $table->integer("pekerjaan_id")->unique();
         });
         

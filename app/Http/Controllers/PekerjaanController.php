@@ -28,8 +28,12 @@ class PekerjaanController extends Controller
             return DataTables::of($data)->addIndexColumn()
                 ->addColumn('action', function ($row){
 
-                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="badge bg-primary editPerusahaan">Edit</a>';
-                    $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="badge bg-danger deletePerusahaan">Delete</a>';
+                    $btn = '<div class="btn-group"><a href="javascript:void(0)" data-toggle="tooltip" title="Edit Pekerjaan"  data-id="'.$row->id.'"  class="btn btn-flat bg-primary editPerusahaan btn-sm">E</a>';
+                    
+                    $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip" title="Buatkan Jadwal"  data-id="'.$row->id.'"  class="btn btn-flat bg-warning jadwalPerusahaan btn-sm">J</a>';
+                    $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip" title="Cetak"  data-id="'.$row->id.'"  class="btn btn-flat bg-success cetakPerusahaan btn-sm">C</a>';
+                    $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip" title="Hapus Pekerjaan"  data-id="'.$row->id.'"  class="btn btn-flat bg-danger deletePerusahaan btn-sm">D</a>';
+                    $btn = $btn . "</div>";
                     return $btn;
                 })->rawColumns(['action'])->make(true);
         }
@@ -73,9 +77,7 @@ class PekerjaanController extends Controller
             $xdata = $request->all();
             $user_id = Pekerjaan::create($xdata)->id;
 
-            $db = DB::table('pekerjaans')->where('id', $user_id)->update(['perusahaan_id' => $request->perusahaan_id ]);
-
-            $data = "Tambah baru sukses";
+            $data = "Tambah baru sukses dengan id = {$user_id}";
         }
 
         //Pekerjaan::updateOrCreate($request->all());
