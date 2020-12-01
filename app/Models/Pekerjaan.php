@@ -61,5 +61,10 @@ class Pekerjaan extends Model
         return $this->hasOne("App\Models\Lelang");
     }
 
+    public function termyn()
+    {
+        return $this->hasOne("App\Models\termyn");
+    }
+
 
 }

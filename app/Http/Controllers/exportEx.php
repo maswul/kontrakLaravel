@@ -70,8 +70,8 @@ class exportEx extends Controller
         $tgl_spk = Carbon::parse($db->tgl_17)->isoFormat('D MMMM Y');
         $sheet->setCellValue("D12", "Pembayaran 100% Pekerjaan {$db->pekerjaan['pekerjaan']}, Sesuai Surat Perintah Kerja Nomor : 690/ {$db->no_17} /105.4/2020, Tanggal : {$tgl_spk}"); //isiKwitansi
 
-        $terbilang = ucwords(strtolower(Terbilang::make($db->pekerjaan['nego']," Rupiah")));
-        $sheet->setCellValue("D10","( $terbilang )");
+        $terbilang = ucwords(strtolower(Terbilang::make($db->pekerjaan['nego'], " Rupiah")));
+        $sheet->setCellValue("D10", "( $terbilang )");
 
         //ganti sheet pajak
         $sheet = $ss->getSheetByName('pajak');
@@ -82,13 +82,13 @@ class exportEx extends Controller
 
 
         $writer = new Xlsx($ss);
-        $judul_50 = substr($db->pekerjaan['pekerjaan'],0,30);
+        $judul_50 = substr($db->pekerjaan['pekerjaan'], 0, 30);
         $fileName = "Termin_{$db->pekerjaan['perusahaan']['nama']}_{$judul_50}.xlsx";
         //$writer->save("");
 
 
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment; filename="'. $fileName.'"');
+        header('Content-Disposition: attachment; filename="' . $fileName . '"');
         $writer->save('php://output');
 
 
@@ -109,24 +109,23 @@ class exportEx extends Controller
 
         $sheet = $ss->getActiveSheet();
         $n = 1;
-        foreach($db as $item)
-        {
+        foreach ($db as $item) {
             $n++;
-            $sheet->setCellValue('A'.$n, $item->nama);
-            $sheet->setCellValue('B'.$n, $item->direktur);
-            $sheet->setCellValue('C'.$n, $item->npwp);
-            $sheet->setCellValue('D'.$n, $item->bank);
-            $sheet->setCellValue('E'.$n, $item->rekening);
-            $sheet->setCellValue('F'.$n, $item->alamat);
+            $sheet->setCellValue('A' . $n, $item->nama);
+            $sheet->setCellValue('B' . $n, $item->direktur);
+            $sheet->setCellValue('C' . $n, $item->npwp);
+            $sheet->setCellValue('D' . $n, $item->bank);
+            $sheet->setCellValue('E' . $n, $item->rekening);
+            $sheet->setCellValue('F' . $n, $item->alamat);
         }
 
-        $fileName = "DataPerusahaan_".Carbon::now().".xlsx";
+        $fileName = "DataPerusahaan_" . Carbon::now() . ".xlsx";
         $writer = new Xlsx($ss);
         //$writer->save("");
 
 
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment; filename="'. $fileName.'"');
+        header('Content-Disposition: attachment; filename="' . $fileName . '"');
         $writer->save('php://output');
 
     }
@@ -145,31 +144,42 @@ class exportEx extends Controller
         return;
     }
 
-    public function kontrak($id) {
+    public function kontrak($id)
+    {
         //echo Pekerjaan::find($id)->tipe;
 
-        switch (Pekerjaan::find($id)->tipe)
-        {
-            case 1:
-                //jasakonsultansi
-                break;
-            case 2:
-                //fisik
-                break;
-            case 3:
-                //perencanaan
-                $file = storage_path('app/template/kontrak.docx');
-                $tugas = "Perencanaan Teknis Pembangunan Sarana Prasarana Air Bersih";
-                $namafile = "Perencanaan";
-                $this->kon_perencanaan($id, $tugas, $file, $namafile);
-                break;
-            case 4:
-                //pengawasan
-                $file = storage_path('app/template/kontrak_awas.docx');
-                $tugas = "Pengawasan Fisik Pembangunan Sarana Prasarana Air Bersih";
-                $namafile = "Pengawasan";
-                $this->kon_perencanaan($id, $tugas, $file, $namafile);
-                break;
+        $lelang = Lelang::whereHas('pekerjaan', function ($q) use ($id) {
+            $q->where('id', $id);
+        })->get();
+
+        if ($lelang->count() == 0) {
+            //check data lelang
+            return redirect(route('lelang', array("id" => $id)));
+        } else {
+
+
+            switch (Pekerjaan::find($id)->tipe) {
+                case 1:
+                    //jasakonsultansi
+                    break;
+                case 2:
+                    //fisik
+                    break;
+                case 3:
+                    //perencanaan
+                    $file = storage_path('app/template/kontrak.docx');
+                    $tugas = "Perencanaan Teknis Pembangunan Sarana Prasarana Air Bersih";
+                    $namafile = "Perencanaan";
+                    $this->kon_perencanaan($id, $tugas, $file, $namafile);
+                    break;
+                case 4:
+                    //pengawasan
+                    $file = storage_path('app/template/kontrak_awas.docx');
+                    $tugas = "Pengawasan Fisik Pembangunan Sarana Prasarana Air Bersih";
+                    $namafile = "Pengawasan";
+                    $this->kon_perencanaan($id, $tugas, $file, $namafile);
+                    break;
+            }
         }
     }
 
@@ -177,7 +187,7 @@ class exportEx extends Controller
     {
         //parent::__call($method, $parameters); // TODO: Change the autogenerated stub
         $file = storage_path('app/template/template.rtf');
-        return WordTemplate::export($file, array(),'suket.doc');
+        return WordTemplate::export($file, array(), 'suket.doc');
     }
 
     public function kon_perencanaan($id, $tugas, $file, $nmfile)
@@ -200,32 +210,32 @@ class exportEx extends Controller
         }
 
         //untuk Pekerjaan
-        $dtPeker['pekerjaan_full'] = $tugas." ".$dtPeker['pekerjaan'];
+        $dtPeker['pekerjaan_full'] = $tugas . " " . $dtPeker['pekerjaan'];
 
         $tpl = new TemplateProcessor($file);
 
         $bayar80 = 0.8 * $dtPeker['nego'];
-        $bayar80_terbilang = ucwords(strtolower(Terbilang::make($bayar80," Rupiah")));
+        $bayar80_terbilang = ucwords(strtolower(Terbilang::make($bayar80, " Rupiah")));
         $bayar5 = 0.05 * $dtPeker['nego'];
-        $bayar5_terbilang = ucwords(strtolower(Terbilang::make($bayar5," Rupiah")));
+        $bayar5_terbilang = ucwords(strtolower(Terbilang::make($bayar5, " Rupiah")));
         $bayar15 = 0.15 * $dtPeker['nego'];
-        $bayar15_terbilang = ucwords(strtolower(Terbilang::make($bayar15," Rupiah")));
+        $bayar15_terbilang = ucwords(strtolower(Terbilang::make($bayar15, " Rupiah")));
 
 
-        $tpl->setValue('hps_terbilang', ucwords(strtolower(Terbilang::make($dtPeker['hps']," Rupiah"))));
-        $tpl->setValue('penawaran_terbilang', ucwords(strtolower(Terbilang::make($dtPeker['penawaran']," Rupiah"))));
-        $tpl->setValue('nego_terbilang', ucwords(strtolower(Terbilang::make($dtPeker['nego']," Rupiah"))));
+        $tpl->setValue('hps_terbilang', ucwords(strtolower(Terbilang::make($dtPeker['hps'], " Rupiah"))));
+        $tpl->setValue('penawaran_terbilang', ucwords(strtolower(Terbilang::make($dtPeker['penawaran'], " Rupiah"))));
+        $tpl->setValue('nego_terbilang', ucwords(strtolower(Terbilang::make($dtPeker['nego'], " Rupiah"))));
 
-        $tpl->setValue('bayar80', number_format($bayar80, 2,',','.'));
+        $tpl->setValue('bayar80', number_format($bayar80, 2, ',', '.'));
         $tpl->setValue('bayar80_terbilang', $bayar80_terbilang);
-        $tpl->setValue('bayar5', number_format($bayar5, 2,',','.'));
+        $tpl->setValue('bayar5', number_format($bayar5, 2, ',', '.'));
         $tpl->setValue('bayar5_terbilang', $bayar5_terbilang);
-        $tpl->setValue('bayar15', number_format($bayar15, 2,',','.'));
+        $tpl->setValue('bayar15', number_format($bayar15, 2, ',', '.'));
         $tpl->setValue('bayar15_terbilang', $bayar15_terbilang);
 
-        $dtPeker['hps'] = number_format($dtPeker['hps'], 2,',','.');
-        $dtPeker['penawaran'] = number_format($dtPeker['penawaran'], 2,',','.');
-        $dtPeker['nego'] = number_format($dtPeker['nego'], 2,',','.');
+        $dtPeker['hps'] = number_format($dtPeker['hps'], 2, ',', '.');
+        $dtPeker['penawaran'] = number_format($dtPeker['penawaran'], 2, ',', '.');
+        $dtPeker['nego'] = number_format($dtPeker['nego'], 2, ',', '.');
 
         $tpl->setValues($dtPeker);
 
