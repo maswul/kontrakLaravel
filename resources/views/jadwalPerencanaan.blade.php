@@ -19,6 +19,16 @@
 @section('Isi')
 
 <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            
+            <div id="alert-ku" class="alert alert-success text-center" role="alert">
+                Pekerjaan {{ $pekerjaan }}
+            </div>
+            
+        </div>
+    </div>
+
     <form name="dataForm" id="dataForm" action="{{ route('lelang.simpan') }}" method="post">
         @csrf
         <input type="hidden" name="pekerjaan_id" id="pekerjaan_id" value="{{ $pekerjaan_id  }}">

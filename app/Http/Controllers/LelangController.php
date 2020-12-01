@@ -84,7 +84,7 @@ class LelangController extends Controller
         
         
         $data['pekerjaan_id'] = $id;
-        
+        $data['pekerjaan'] = Pekerjaan::find($id)->pekerjaan;
         
         $data['pekerjaan_tipe'] = Pekerjaan::find($id)->tipe;
         return view('jadwalperencanaan', $data);

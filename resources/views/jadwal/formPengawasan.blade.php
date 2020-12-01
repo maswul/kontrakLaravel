@@ -25,7 +25,7 @@
             <td>3</td>
             <td>BA. Serah Terima Hasil Pekerjaan (PPK + KPA)</td>
             <td><input class="form-control" type="text" name="termin_tgl_3" id="termin_tgl_3" value="{{ $termin->termin_tgl_3 ?? '' }}"  data-inputmask-alias="datetime" data-inputmask-inputformat="dd-mm-yyyy" data-mask></td>
-            <td><input class="form-control" type="text" name="termin_no_3" id="termin_no_3" value="{{ $termin->termin_no_5 ?? '' }}"></td>
+            <td><input class="form-control" type="text" name="termin_no_3" id="termin_no_3" value="{{ $termin->termin_no_3 ?? '' }}"></td>
         </tr>
         <tr>
             <td>4</td>
