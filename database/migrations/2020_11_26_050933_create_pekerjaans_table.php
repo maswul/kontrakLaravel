@@ -18,7 +18,8 @@ class CreatePekerjaansTable extends Migration
             $table->integer('perusahaan_id'); //data perusahaan
             $table->string('program');
             $table->string('kegiatan');
-            $table->string('pekerjaan');
+            //$table->string('pekerjaan');
+            $table->text('pekerjaan');
 
             $table->year('tahun');
             $table->string('kode_rek')->default('5 2 2 21 02');

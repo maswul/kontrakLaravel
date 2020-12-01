@@ -50,7 +50,8 @@
                                     <div class="form-group">
                                         <label for="pekerjaan" >Pekerjaan</label>
 
-                                            <input type="text" class="form-control" id="pekerjaan" name="pekerjaan" placeholder="Pekerjaan" required="">
+                                            
+                                            <textarea class="form-control text-sm" id="pekerjaan" name="pekerjaan" placeholder="Pekerjaan" required></textarea>
 
                                     </div>
                                 </div>
@@ -230,6 +231,16 @@
                 position: 'top-end',
                 showConfirmButton: false,
                 timer: 3000
+            });
+
+            //ini untuk fungsi ganti rekening
+            $("#tipe").change(function(){
+                if ($(this).val() == 1)
+                {
+                    $("#kode_rek").val("5 2 2 21 02")
+                }else{
+                    $("#kode_rek").val("5 2 2 24 01")
+                }
             });
 
             var table = $('#data-table').DataTable({

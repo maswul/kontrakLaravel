@@ -9,7 +9,7 @@ class TerminPengawasan extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id','pekerjaan_id'];
+    protected $guarded = ['id'];
 
     public function pekerjaan()
     {

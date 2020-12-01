@@ -13,7 +13,7 @@ class TerminFisik extends Model
      *
      * @var array
      */
-    protected $guarded = ['id','pekerjaan_id'];
+    protected $guarded = ['id'];
 
     public function pekerjaan()
     {

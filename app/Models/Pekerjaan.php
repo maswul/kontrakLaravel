@@ -56,5 +56,10 @@ class Pekerjaan extends Model
         return $this->hasOne("App\Models\TerminPengawasan");
     }
 
+    public function lelang()
+    {
+        return $this->hasOne("App\Models\Lelang");
+    }
+
 
 }

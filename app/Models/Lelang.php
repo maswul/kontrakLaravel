@@ -13,5 +13,10 @@ class Lelang extends Model
      *
      * @var array
      */
-    protected $guarded = ['id', 'pekerjaan_id'];
+    protected $guarded = ['id'];
+
+    public function pekerjaan()
+    {
+        return $this->belongsTo('App\Models\Pekerjaan');
+    }
 }

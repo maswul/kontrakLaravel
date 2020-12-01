@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\Pekerjaan;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\DB;
+use App\Models\TerminPengawasan;
+use App\Models\TerminPerencanaan;
+use App\Models\TerminFisik;
+use App\Models\Lelang;
 
 class PekerjaanController extends Controller
 {
@@ -96,6 +100,32 @@ class PekerjaanController extends Controller
 
     public function destroy($id)
     {
+        $tipe = Pekerjaan::find($id)->tipe;
+        
+        Lelang::with('pekerjaan')->whereHas('pekerjaan', function ($q) use ($id){
+            $q->where('id', $id);
+        })->delete();
+        switch ($tipe) {
+            case '1':
+                //konsultansi
+            break;
+            case '2':
+                TerminFisik::with('pekerjaan')->whereHas('pekerjaan', function ($q) use ($id){
+                    $q->where('id', $id);
+                })->delete();
+            break;
+            case '3':
+                TerminPerencanaan::with('pekerjaan')->whereHas('pekerjaan', function ($q) use ($id){
+                    $q->where('id', $id);
+                })->delete();
+            break;
+            default:
+                TerminPengawasan::with('pekerjaan')->whereHas('pekerjaan', function ($q) use ($id){
+                    $q->where('id', $id);
+                })->delete();
+                break;
+        }
+
         Pekerjaan::find($id)->delete();
 
         return response()->json(['success'=>'Perusahaan berhasil dihapus!']);

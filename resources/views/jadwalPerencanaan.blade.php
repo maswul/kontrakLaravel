@@ -19,7 +19,8 @@
 @section('Isi')
 
 <div class="container-fluid">
-    <form name="dataForm" id="dataForm" target="{{ route('lelang.simpan') }}" method="post">
+    <form name="dataForm" id="dataForm" action="{{ route('lelang.simpan') }}" method="post">
+        @csrf
         <input type="hidden" name="pekerjaan_id" id="pekerjaan_id" value="{{ $pekerjaan_id  }}">
         <input type="hidden" name="pekerjaan_tipe" id="pekerjaan_tipe" value="{{ $pekerjaan_tipe }}">
     <div class="col-md-12">
