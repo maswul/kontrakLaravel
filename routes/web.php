@@ -36,14 +36,12 @@ Route::resource('cetak', CetakController::class);
 Route::get('/coba', [Jadwal::class,'coba']);
 
 Route::get('pajak/{id}', [exportEx::class,'pajak'])->name('cetak.pajak');
+Route::get('kontrak/{id}', [exportEx::class, 'kontrak'])->name('cetak.kontrak');
 
 Route::get('termin/{id}', function ($id) {
     return "Hello word";
 })->name('cetak.termin');
 
-Route::get('kontrak/{id}', function ($id) {
-    return "Hello word";
-})->name('cetak.kontrak');
 
 Route::get('download/perusahaan', [exportEx::class,'dlperusahaan'])->name('download.perusahaan');
 

@@ -9,7 +9,7 @@ class Perusahaan extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nama', 'direktur', 'npwp', 'bank', 'rekening', 'alamat'];
+    protected $fillable = ['nama', 'direktur', 'npwp', 'bank', 'rekening', 'alamat', 'kota'];
 
     public function pekerjaan()
     {

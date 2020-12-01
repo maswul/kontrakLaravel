@@ -23,10 +23,10 @@ class PerusahaanControlleer extends Controller
                     return $btn;
                 })->rawColumns(['action'])->make(true);
         }
-        
+
         $datas = array("request" => $request,
                     "count" => Perusahaan::get()->count());
-        
+
         return view("perusahaan.home", $datas);
     }
 
@@ -36,6 +36,7 @@ class PerusahaanControlleer extends Controller
             ['nama' => $request->nama, 'direktur' => $request->direktur, 'npwp' => $request->npwp,
                 'bank' => $request->bank,
                 'rekening' => $request->rekening,
+                'kota' => $request->kota,
                 'alamat' => $request->alamat]
         );
 

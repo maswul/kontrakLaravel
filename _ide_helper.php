@@ -15026,6 +15026,37 @@
      
 }
 
+    namespace Novay\WordTemplate { 
+            /**
+     * 
+     *
+     */ 
+        class Facade {
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function export($file = null, $replace = null, $filename = 'default.doc')
+        {
+                        /** @var \Novay\WordTemplate\WordTemplate $instance */
+                        return $instance->export($file, $replace, $filename);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function verify($file)
+        {
+                        /** @var \Novay\WordTemplate\WordTemplate $instance */
+                        return $instance->verify($file);
+        }
+         
+    }
+     
+}
+
     namespace Yajra\DataTables\Facades { 
             /**
      * 
@@ -18363,6 +18394,7 @@ namespace  {
             class Terbilang extends \Riskihajar\Terbilang\Facades\Terbilang {}
             class Flare extends \Facade\Ignition\Facades\Flare {}
             class Excel extends \Maatwebsite\Excel\Facades\Excel {}
+            class WordTemplate extends \Novay\WordTemplate\Facade {}
             class DataTables extends \Yajra\DataTables\Facades\DataTables {}
      
 }
