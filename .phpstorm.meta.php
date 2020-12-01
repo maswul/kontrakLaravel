@@ -184,7 +184,6 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
-            'word-template' => \Novay\WordTemplate\WordTemplate::class,
         ]));
     override(\Illuminate\Container\Container::makeWith(0), map([
         '' => '@',
@@ -361,7 +360,6 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
-            'word-template' => \Novay\WordTemplate\WordTemplate::class,
         ]));
     override(\Illuminate\Contracts\Container\Container::get(0), map([
         '' => '@',
@@ -538,7 +536,6 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
-            'word-template' => \Novay\WordTemplate\WordTemplate::class,
         ]));
     override(\Illuminate\Contracts\Container\Container::make(0), map([
         '' => '@',
@@ -715,7 +712,6 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
-            'word-template' => \Novay\WordTemplate\WordTemplate::class,
         ]));
     override(\Illuminate\Contracts\Container\Container::makeWith(0), map([
         '' => '@',
@@ -892,7 +888,6 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
-            'word-template' => \Novay\WordTemplate\WordTemplate::class,
         ]));
     override(\App::get(0), map([
         '' => '@',
@@ -1069,7 +1064,6 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
-            'word-template' => \Novay\WordTemplate\WordTemplate::class,
         ]));
     override(\App::make(0), map([
         '' => '@',
@@ -1246,7 +1240,6 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
-            'word-template' => \Novay\WordTemplate\WordTemplate::class,
         ]));
     override(\App::makeWith(0), map([
         '' => '@',
@@ -1423,7 +1416,6 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
-            'word-template' => \Novay\WordTemplate\WordTemplate::class,
         ]));
     override(\app(0), map([
         '' => '@',
@@ -1600,7 +1592,6 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
-            'word-template' => \Novay\WordTemplate\WordTemplate::class,
         ]));
     override(\resolve(0), map([
         '' => '@',
@@ -1777,7 +1768,6 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
-            'word-template' => \Novay\WordTemplate\WordTemplate::class,
         ]));
     override(\Psr\Container\ContainerInterface::get(0), map([
         '' => '@',
@@ -1954,7 +1944,6 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
-            'word-template' => \Novay\WordTemplate\WordTemplate::class,
         ]));
 
 

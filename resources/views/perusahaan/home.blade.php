@@ -17,7 +17,7 @@
                     <div class="card-tools">
                         <div class="input-group input-group-sm">
                             @if ($count > 0)
-                            <a href="{{ route("download.perusahaan") }}" role="button" class="btn btn-primary float-right">Download Data</a>
+                            <a href="{{ route("download.perusahaan") }}" role="button" class="btn btn-primary float-right">Download Data</a>    
                             @endif
                         </div>
                       </div>
@@ -109,15 +109,6 @@
                             </div>
                         </div>
                     </div>
-                        <!-- kota -->
-                        <p class="mt-2 mb-2">Kota:</p>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <input type="text" id="kota" name="kota" class="form-control"  placeholder="SURABAYA"></input>
-                                </div>
-                            </div>
-                        </div>
                     </form>
                 </div>
 
@@ -180,7 +171,6 @@
                     $("#bank").val(data.bank);
                     $("#rekening").val(data.rekening);
                     $("#alamat").val(data.alamat);
-                    $("#kota").val(data.kota);
                     $("#simpan").html('Update');
                 });
             });
@@ -227,7 +217,7 @@
                 showCancelButton: true,
                 }).then((res) => {
                     if(res) {
-
+                       
                         $.ajax({
                             type: "DELETE",
                             url: "perusahaan"+'/'+Customer_id,
@@ -248,14 +238,14 @@
                             }
                         });
 
-
+                        
                     }
-
+                    
                 })
 
 
 
-
+                
             });
         });
     </script>

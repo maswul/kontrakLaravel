@@ -21,7 +21,6 @@ class CreatePerusahaansTable extends Migration
             $table->string('bank')->nullable();
             $table->string('rekening')->nullable();
             $table->string('alamat')->nullable();
-            $table->string('kota')->nullable();
             $table->timestamps();
         });
     }

@@ -177,7 +177,6 @@ namespace App\Models{
  * @property string|null $no_18
  * @property string|null $tgl_19
  * @property int $pekerjaan_id
- * @property-read \App\Models\Pekerjaan $pekerjaan
  * @method static \Illuminate\Database\Eloquent\Builder|Lelang newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Lelang newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Lelang query()
@@ -246,7 +245,6 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\JTermin|null $jtermin
- * @property-read \App\Models\Lelang|null $lelang
  * @property-read \App\Models\Perusahaan $perusahaan
  * @property-read \App\Models\TerminFisik|null $terminfisik
  * @property-read \App\Models\TerminPengawasan|null $terminpengawasan

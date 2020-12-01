@@ -15,9 +15,7 @@
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "maatwebsite/excel": "^3.1",
-        "novay/laravel-word-template": "^1.1",
         "phpoffice/phpspreadsheet": "^1.15",
-        "phpoffice/phpword": "^0.17.0",
         "riskihajar/terbilang": "^1.2",
         "yajra/laravel-datatables-oracle": "^9.14"
     },

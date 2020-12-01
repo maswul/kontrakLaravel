@@ -48,9 +48,9 @@
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="form-group">
-                                        <label id="lblpekerjaan" for="pekerjaan" >Pekerjaan</label>
+                                        <label for="pekerjaan" >Pekerjaan</label>
 
-
+                                            
                                             <textarea class="form-control text-sm" id="pekerjaan" name="pekerjaan" placeholder="Pekerjaan" required></textarea>
 
                                     </div>
@@ -63,7 +63,7 @@
                                             <option value="2">Fisik</option>
                                             <option value="3">Perencanaan</option>
                                             <option value="4">Pengawasan</option>
-
+                                            
                                         </select>
                                     </div>
                                 </div>
@@ -233,20 +233,13 @@
                 timer: 3000
             });
 
-            if($("#tipe").val() > 1){
-                $("#lblpekerjaan").html("Lokasi");
-            }
-
             //ini untuk fungsi ganti rekening
             $("#tipe").change(function(){
                 if ($(this).val() == 1)
                 {
                     $("#kode_rek").val("5 2 2 21 02")
-                    $("#lblpekerjaan").html("Pekerjaan");
                 }else{
-                    $("#kode_rek").val("5 2 2 24 01");
-                    $("#lblpekerjaan").html("Lokasi");
-
+                    $("#kode_rek").val("5 2 2 24 01")
                 }
             });
 
@@ -363,11 +356,6 @@
                 window.location.href = "tanggal/" + Perusahaan_id;
             });
 
-            $('body').on('click', '.cetakPerusahaan', function () {
-                var Perusahaan_id = $(this).data('id');
-                window.location.href = "kontrak/" + Perusahaan_id;
-            });
-
             $('body').on('click', '.deletePerusahaan', function () {
 
                 var Customer_id = $(this).data("id");
@@ -398,12 +386,12 @@
                                     title: 'Ada kendala saat menghapus data!'
                                 });
                             }
-
+                            
                         });
 
-
+                        
                     }
-
+                    
                 })
             })
 
