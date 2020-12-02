@@ -237,9 +237,9 @@ class exportEx extends Controller
         $tpl->setValue('bayar15', number_format($bayar15, 2, ',', '.'));
         $tpl->setValue('bayar15_terbilang', $bayar15_terbilang);
 
-        $dtPeker['hps'] = number_format($dtPeker['hps'], 2, ',', '.');
-        $dtPeker['penawaran'] = number_format($dtPeker['penawaran'], 2, ',', '.');
-        $dtPeker['nego'] = number_format($dtPeker['nego'], 2, ',', '.');
+        $dtPeker['hps'] = number_format($dtPeker['hps'], 0, ',', '.');
+        $dtPeker['penawaran'] = number_format($dtPeker['penawaran'], 0, ',', '.');
+        $dtPeker['nego'] = number_format($dtPeker['nego'], 0, ',', '.');
 
         $tpl->setValues($dtPeker);
 
