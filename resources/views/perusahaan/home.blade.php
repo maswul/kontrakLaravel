@@ -8,142 +8,187 @@
 @section('nav_perusahaan', 'active')
 
 @section('Isi')
-  <div class="container-fluid text-sm">
-    <div class="row">
-        <div class="col-md-8">
-            <div class="card card-danger card-outline">
-                <div class="card-header">
-                    <h3 class="card-title">Daftar Perusahaan</h3>
-                    <div class="card-tools">
-                        <div class="input-group input-group-sm">
-                            @if ($count > 0)
-                            <a href="{{ route("download.perusahaan") }}" role="button" class="btn btn-primary float-right">Download Data</a>
-                            @endif
+    <div class="container-fluid ">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card card-danger card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title">Daftar Perusahaan</h3>
+                        <div class="card-tools">
+                            <div class="input-group input-group-sm">
+                                @if ($count > 0)
+                                    <a href="{{ route("download.perusahaan") }}" role="button"
+                                       class="btn btn-primary float-right">Download Data</a>
+                                @endif
+                            </div>
                         </div>
-                      </div>
-                </div>
-                <div class="card-body">
-                    <table class="table table-bordered table-striped" id="data-table">
-                        <thead>
-                          <tr>
-                            <th>Nama</th>
-                            <th>Direktur</th>
-                            <th>Alamat</th>
-                            <th>NPWP</th>
-                            <th></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered table-striped" id="data-table">
+                            <thead>
+                            <tr>
+                                <th>Nama</th>
+                                <th>Direktur</th>
+                                <th>Alamat</th>
+                                <th>Kota</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card card-warning">
-                <div class="card-header">
-                    <h3 class="card-title">Tambah Perusahaan</h3>
-                </div>
+            <div class="col-md-4">
+                <div class="card card-warning">
+                    <div class="card-header">
+                        <h3 class="card-title">Tambah Perusahaan</h3>
+                    </div>
 
-                <div class="card-body">
-                    <form id="PerusahaanForm" name="PerusahaanForm">
-                        @csrf
-                        <input type="hidden" id="Perusahaan_id" name="Perusahaan_id">
-                    <p class="mb-2">Data Perusahaan:</p>
-                    <div class="input-group mb-3">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
+                    <div class="card-body">
+                        <form id="PerusahaanForm" name="PerusahaanForm" class="">
+                            @csrf
+                            <input type="hidden" id="Perusahaan_id" name="Perusahaan_id">
+                            <p class="mb-2">Data Perusahaan:</p>
+                            <div class="input-group mb-3">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
                                 <span class="input-group-text">
                                     <i class="fas fa-book"></i>
                                 </span>
 
+                                    </div>
+                                    <input id="nama" name="nama" class="form-control text-sm" type="text"
+                                           placeholder="Nama Perusahaan">
+                                </div>
                             </div>
-                            <input id="nama" name="nama" class="form-control" type="text" placeholder="Nama Perusahaan">
-                        </div>
-                    </div>
-                    <!-- NPWP -->
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
+                            <!-- NPWP -->
+                            <div class="input-group mb-3">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
                                 <span class="input-group-text">
                                     <i class="fas fa-users"></i>
                                 </span>
 
+                                    </div>
+                                    <input id="direktur" name="direktur" class="form-control text-sm" type="text"
+                                           placeholder="Nama Direktur">
                                 </div>
-                                <input id="direktur" name="direktur" class="form-control" type="text" placeholder="Nama Direktur">
                             </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="input-group">
-                                <input id="npwp" name="npwp" class="form-control" type="text" placeholder="NPWP">
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fas fa-barcode"></i>
+                                </span>
+                                </div>
+                                <input id="npwp" name="npwp" class="form-control text-sm" type="text" placeholder="NPWP">
                             </div>
-                        </div>
-                    </div>
-                    <!--Lokasi bank -->
-                    <p class="mt-4 mb-2">Bank:</p>
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <div class="input-group">
+                            <!--Lokasi bank -->
+                            <p class="mt-4 mb-2">Bank:</p>
+                            <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                 <span class="input-group-text">
                                     <i class="fas fa-money-check"></i>
                                 </span>
 
                                 </div>
-                                <input id="bank" name="bank"  class="form-control" type="text" placeholder="Bank Jatim Cabang ...">
+                                <input id="bank" name="bank" class="form-control text-sm" type="text"
+                                       placeholder="Bank Jatim Cabang ...">
                             </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="input-group">
-                                <input id="rekening" name="rekening" class="form-control" type="text" placeholder="No Rekening">
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fas fa-money-bill"></i>
+                                </span>
+                                </div>
+                                <input id="rekening" name="rekening" class="form-control text-sm" type="text"
+                                       placeholder="No Rekening">
                             </div>
-                        </div>
-                    </div>
-                    <!-- TEXTAREA ALAMT -->
-                    <p class="mt-4 mb-2">Alamat Perusahaan:</p>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <textarea id="alamat" name="alamat" class="form-control" rows="3" placeholder="Jl. Gayungkebonsari No. 169 Surabaya"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                        <!-- kota -->
-                        <p class="mt-2 mb-2">Kota:</p>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <input type="text" id="kota" name="kota" class="form-control"  placeholder="SURABAYA"></input>
+
+
+                            <!-- TEXTAREA ALAMT -->
+                            <p class="mt-4 mb-2">Alamat Perusahaan:</p>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <textarea id="alamat" name="alamat" class="form-control text-sm" rows="3"
+                                                  placeholder="Jl. Gayungkebonsari No. 169 Surabaya"></textarea>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
-                </div>
+                            <!-- kota -->
+                            <p class="mt-2 mb-2">Kota:</p>
 
-                <div class="card-footer">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-home"></i>
+                                        </span>
+                                </div>
+                                <input type="text" id="kota" name="kota" class="form-control text-sm"
+                                       placeholder="SURABAYA"></input>
+                            </div>
+                            <!-- comment -->
+                            <p class="mt-4 mb-2">Notaris:</p>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="input-group mb-3">
 
-                       <button id="simpan" type="submit" class="btn btn-lg btn-warning float-right">Simpan</button>
+                                        <input id="notaris_no" name="notaris_no" class="form-control text-sm" type="text"
+                                               placeholder="Nomer Akta Notaris">
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
 
-                </div>
+                                    <div class="input-group mb-3">
+
+                                        <input id="notaris_tanggal" name="notaris_tanggal" class="form-control text-sm" type="text"
+                                               placeholder="Tanggal akta notaris: 1 Desember 2020">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-group mb-3">
+
+                                <input id="notaris" name="notaris" class="form-control text-sm" type="text"
+                                       placeholder="Nama Notaris">
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <div class="card-footer">
+
+                        <button id="simpan" type="submit" class="btn btn-lg btn-warning float-right">Simpan</button>
+                        <button id="batal" type="button" class="btn btn-lg btn-default">Batal</button>
+
+                    </div>
 
                 </div>
 
             </div>
         </div>
 
-  </div>
+    </div>
 
 
 @endsection
 
 @section('script')
     <script type="text/javascript">
-        $(function (){
+        $(function () {
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
+            });
+
+            $("#batal").click(function (){
+                $("#Perusahaan_id").val('');
+                $("#PerusahaanForm").trigger("reset");
+                $("#simpan").html("Simpan");
             });
 
             const Toast = Swal.mixin({
@@ -165,14 +210,14 @@
                     {data: 'nama', name: 'nama'},
                     {data: 'direktur', name: 'direktur'},
                     {data: 'alamat', name: 'alamat'},
-                    {data: 'npwp', name: 'npwp'},
+                    {data: 'kota', name: 'kota'},
                     {data: 'action', name: 'action', orderable: false, searchable: false}
                 ]
             });
 
-            $('body').on('click', '.editPerusahaan', function (){
+            $('body').on('click', '.editPerusahaan', function () {
                 var Perusahaan_id = $(this).data('id');
-                $.get("perusahaan" + "/" + Perusahaan_id + "/edit", function (data){
+                $.get("perusahaan" + "/" + Perusahaan_id + "/edit", function (data) {
                     $("#Perusahaan_id").val(data.id);
                     $("#nama").val(data.nama);
                     $("#direktur").val(data.direktur);
@@ -181,11 +226,14 @@
                     $("#rekening").val(data.rekening);
                     $("#alamat").val(data.alamat);
                     $("#kota").val(data.kota);
+                    $("#notaris_no").val(data.notaris_no);
+                    $("#notaris_tanggal").val(data.notaris_tanggal);
+                    $("#notaris").val(data.notaris);
                     $("#simpan").html('Update');
                 });
             });
 
-            $('#simpan').click(function (e){
+            $('#simpan').click(function (e) {
                 e.preventDefault();
                 $(this).html('Sending');
 
@@ -194,7 +242,7 @@
                     url: "",
                     type: "POST",
                     dataType: 'json',
-                    success: function (data){
+                    success: function (data) {
                         $("#Perusahaan_id").val('');
                         $("#PerusahaanForm").trigger("reset");
                         $("#simpan").html("Simpan");
@@ -205,7 +253,7 @@
                         table.draw();
 
                     },
-                    error: function (data){
+                    error: function (data) {
                         console.log(data);
                         Toast.fire({
                             icon: 'error',
@@ -217,20 +265,22 @@
                 });
             });
 
+            $('body').tooltip({selector: '[data-toggle="tooltip"]'});
+
             $('body').on('click', '.deletePerusahaan', function () {
 
                 var Customer_id = $(this).data("id");
                 Alt.alternative({
-                status: "question",
-                title: "Are You Sure",
-                text: "Your data will delete permanently",
-                showCancelButton: true,
+                    status: "question",
+                    title: "Are You Sure",
+                    text: "Your data will delete permanently",
+                    showCancelButton: true,
                 }).then((res) => {
-                    if(res) {
+                    if (res) {
 
                         $.ajax({
                             type: "DELETE",
-                            url: "perusahaan"+'/'+Customer_id,
+                            url: "perusahaan" + '/' + Customer_id,
                             success: function (data) {
                                 Alt.alternative({
                                     status: "success",
@@ -252,8 +302,6 @@
                     }
 
                 })
-
-
 
 
             });

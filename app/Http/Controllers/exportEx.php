@@ -164,6 +164,10 @@ class exportEx extends Controller
                     break;
                 case 2:
                     //fisik
+                    $file = storage_path('app/template/kontrak_fisik.docx');
+                    $tugas = "Pembangunan Sarana Prasarana Air Bersih di";
+                    $namafile = "Fisik";
+                    $this->kon_perencanaan($id, $tugas, $file, $namafile);
                     break;
                 case 3:
                     //perencanaan
@@ -243,8 +247,12 @@ class exportEx extends Controller
         $tpl->setValues($dtLelang);
         $tpl->setValue('DIREKTUR', $dtPer['direktur']);
         $tpl->setValue('PERUSAHAAN', $dtPer['nama']);
+        $tpl->setValue('KOTA', $dtPer['kota']);
+        $tpl->setValue('PEKERJAAN_FULL',$dtPeker['pekerjaan_full'] );
 
-        $filename = "kontrak_{$nmfile}_{$dtPer['nama']}_spk_{$dtLelang['tgl_17']}";
+        $judul_50 = substr($dtPeker['pekerjaan'], 0, 30);
+
+        $filename = "kontrak {$nmfile} {$dtPer['nama']} {$judul_50}";
         header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document');
         header("Content-Disposition: attachment; filename=\"{$filename}.docx\"");
 

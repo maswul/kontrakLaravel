@@ -18,8 +18,9 @@ class PerusahaanControlleer extends Controller
             return DataTables::of($data)->addIndexColumn()
                 ->addColumn('action', function ($row){
 
-                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="badge bg-primary editPerusahaan">Edit</a>';
-                    $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="badge bg-danger deletePerusahaan">Delete</a>';
+                    $btn = '<div class="btn-group"><a href="javascript:void(0)" data-toggle="tooltip" title="Edit"  data-id="'.$row->id.'" data-original-title="Edit" class="btn btn-flat btn-xs bg-primary editPerusahaan">Edt</a>';
+                    $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip" title="Hapus"  data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-flat btn-xs bg-danger deletePerusahaan">Del</a>';
+                    $btn .= '</div>';
                     return $btn;
                 })->rawColumns(['action'])->make(true);
         }
@@ -33,11 +34,7 @@ class PerusahaanControlleer extends Controller
     public function store(Request $request)
     {
         Perusahaan::updateOrCreate(['id' => $request->Perusahaan_id],
-            ['nama' => $request->nama, 'direktur' => $request->direktur, 'npwp' => $request->npwp,
-                'bank' => $request->bank,
-                'rekening' => $request->rekening,
-                'kota' => $request->kota,
-                'alamat' => $request->alamat]
+            $request->all()
         );
 
         return response()->json(['success'=>'Perusahaan aktif telah disimpan']);
