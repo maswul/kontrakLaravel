@@ -38,10 +38,7 @@ Route::get('/coba', [Jadwal::class,'coba']);
 
 Route::get('pajak/{id}', [exportEx::class,'pajak'])->name('cetak.pajak');
 Route::get('kontrak/{id}', [exportEx::class, 'kontrak'])->name('cetak.kontrak');
-
-Route::get('termin/{id}', function ($id) {
-    return "Hello word";
-})->name('cetak.termin');
+Route::get( 'termin/{id}', [exportEx::class,'termin'])->name('cetak.termin');
 
 
 Route::get('download/perusahaan', [exportEx::class,'dlperusahaan'])->name('download.perusahaan');
@@ -52,4 +49,5 @@ Route::post('tanggal/simpan', [LelangController::class, 'store'])->name('lelang.
 
 Route::group(['prefix' => 'pekerjaans'], function () {
     Route::get('list.html',[CPekerjaan::class,'index'])->name('pekerjaan.list');
+    Route::get('{id}/tambah.html', [CPekerjaan::class,'edit'])->name('pekerjaan.tambah');
 });

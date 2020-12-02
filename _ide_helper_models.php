@@ -245,6 +245,9 @@ namespace App\Models{
  * @property int $nego
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $nama_monitoring
+ * @property int|null $perusahaan_pengawas
+ * @property-read mixed $hashid
  * @property-read \App\Models\JTermin|null $jtermin
  * @property-read \App\Models\Lelang|null $lelang
  * @property-read \App\Models\Perusahaan $perusahaan
@@ -261,10 +264,12 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Pekerjaan whereKegiatan($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Pekerjaan whereKodeKeg($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Pekerjaan whereKodeRek($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Pekerjaan whereNamaMonitoring($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Pekerjaan whereNego($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Pekerjaan wherePekerjaan($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Pekerjaan wherePenawaran($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Pekerjaan wherePerusahaanId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Pekerjaan wherePerusahaanPengawas($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Pekerjaan whereProgram($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Pekerjaan whereTahun($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Pekerjaan whereTipe($value)
@@ -284,9 +289,9 @@ namespace App\Models{
  * @property string|null $bank
  * @property string|null $rekening
  * @property string|null $alamat
- * @property string|null $kota
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $kota
  * @property string|null $notaris
  * @property string|null $notaris_tanggal
  * @property string|null $notaris_no

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Vinkla\Hashids\Facades\Hashids;
 
 class Pekerjaan extends Model
 {
@@ -29,6 +30,12 @@ class Pekerjaan extends Model
      * @var array
      */
     protected $guarded = ['id','_token'];
+    protected $appends = ['hashid'];
+
+    public function getHashidAttribute()
+    {
+        return Hashids::encode($this->attributes['id']);
+    }
 
 
     public function perusahaan()

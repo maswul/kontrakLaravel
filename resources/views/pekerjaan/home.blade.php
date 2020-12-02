@@ -1,5 +1,16 @@
 @extends('layout')
 
+@section('title','Daftar Pekerjaan')
+@section('JudulAtas','Daftar Pekerjaan')
+@section('linkJudulAtas','Pekerjaan')
+
+@section('customCss')
+
+@endsection
+
+@section('menu_kontrak','active menu-open')
+@section('nav_pekerjaan', 'active')
+
 @section('Isi')
     <div class="row">
         <div class="col">
@@ -40,7 +51,7 @@
                                             Aksi</button>
                                         <div class="dropdown-menu">
                                             <h6 class="dropdown-header text-left">Modif Data</h6>
-                                            <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Rubah</a>
+                                            <a class="dropdown-item" href="{{ route('pekerjaan.tambah', ['id'=>$item->hashid]) }}"><i class="fas fa-edit"></i> Rubah</a>
                                             <a class="dropdown-item" href="#"><i class="fas fa-trash"
                                                     style="color: red"></i> Hapus</a>
                                             <div class=" dropdown-divider"></div>
@@ -50,7 +61,7 @@
                                                 <div class=" dropdown-divider"></div>
                                                 <h6 class="dropdown-header text-left">Pilih Menu Cetak</h6>
                                                 <a class="dropdown-item" href="{{ route('cetak.kontrak',['id'=>$item->id]) }}"><i class="fas fa-print"></i> Cetak Kontrak</a>
-                                                <a class="dropdown-item" href="#"><i class="fas fa-file-word"></i> Cetak
+                                                <a class="dropdown-item" href="{{ route('cetak.termin', ['id' => $item->id]) }}"><i class="fas fa-file-word"></i> Cetak
                                                     Termyn</a>
                                                 <a class="dropdown-item" href="#"><i class="fas fa-file-excel"></i> Cetak
                                                     Ringkasan dan Pajak</a>

@@ -190,6 +190,9 @@
       <path value="$PROJECT_DIR$/vendor/phpoffice/phpword" />
       <path value="$PROJECT_DIR$/vendor/zendframework/zend-escaper" />
       <path value="$PROJECT_DIR$/vendor/novay/laravel-word-template" />
+      <path value="$PROJECT_DIR$/vendor/hashids/hashids" />
+      <path value="$PROJECT_DIR$/vendor/vinkla/hashids" />
+      <path value="$PROJECT_DIR$/vendor/graham-campbell/manager" />
     </include_path>
   </component>
   <component name="ProjectId" id="1kmhathYS4d1hRoRe6Fpw0BRvLA" />
@@ -246,6 +249,7 @@
       <workItem from="1606859789167" duration="2749000" />
       <workItem from="1606863353150" duration="2010000" />
       <workItem from="1606873232990" duration="7471000" />
+      <workItem from="1606946523267" duration="4136000" />
     </task>
     <servers />
   </component>
@@ -299,10 +303,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="772" y="242" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606380924537" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1606380933551">
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1606949242448">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606380933551" />
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606949242448" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1606883829897">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
