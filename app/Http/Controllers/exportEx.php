@@ -194,6 +194,16 @@ class exportEx extends Controller
         return WordTemplate::export($file, array(), 'suket.doc');
     }
 
+    public function kon_fisik($id, $tugas, $file, $nmfile)
+    {
+        //${perusahaan_pengawas}
+        //${direktur_pengawas}
+        //tgl 17 dan 19
+        //get jumlah minggu
+        //pekerjaan
+        //TODO FUNGSI DOWNLOAD TERMIN
+    }
+
     public function kon_perencanaan($id, $tugas, $file, $nmfile)
     {
 
@@ -230,11 +240,11 @@ class exportEx extends Controller
         $tpl->setValue('penawaran_terbilang', ucwords(strtolower(Terbilang::make($dtPeker['penawaran'], " Rupiah"))));
         $tpl->setValue('nego_terbilang', ucwords(strtolower(Terbilang::make($dtPeker['nego'], " Rupiah"))));
 
-        $tpl->setValue('bayar80', number_format($bayar80, 2, ',', '.'));
+        $tpl->setValue('bayar80', number_format($bayar80, 0, ',', '.'));
         $tpl->setValue('bayar80_terbilang', $bayar80_terbilang);
-        $tpl->setValue('bayar5', number_format($bayar5, 2, ',', '.'));
+        $tpl->setValue('bayar5', number_format($bayar5, 0, ',', '.'));
         $tpl->setValue('bayar5_terbilang', $bayar5_terbilang);
-        $tpl->setValue('bayar15', number_format($bayar15, 2, ',', '.'));
+        $tpl->setValue('bayar15', number_format($bayar15, 0, ',', '.'));
         $tpl->setValue('bayar15_terbilang', $bayar15_terbilang);
 
         $dtPeker['hps'] = number_format($dtPeker['hps'], 0, ',', '.');

@@ -5,6 +5,7 @@ use App\Http\Controllers\PerusahaanControlleer;
 use App\Http\Controllers\PekerjaanController;
 use App\Http\Controllers\Jadwal;
 use App\Http\Controllers\CetakController;
+use App\Http\Controllers\CPekerjaan;
 use App\Http\Controllers\exportEx;
 use App\Http\Controllers\LelangController;
 
@@ -48,3 +49,7 @@ Route::get('download/perusahaan', [exportEx::class,'dlperusahaan'])->name('downl
 Route::get('tanggal/{id}', [LelangController::class,'index'])->name('lelang');
 
 Route::post('tanggal/simpan', [LelangController::class, 'store'])->name('lelang.simpan');
+
+Route::group(['prefix' => 'pekerjaans'], function () {
+    Route::get('list.html',[CPekerjaan::class,'index'])->name('pekerjaan.list');
+});

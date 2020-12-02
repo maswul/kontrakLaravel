@@ -87,7 +87,7 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{url("pekerjaan")}}" class="nav-link @yield('nav_pekerjaan')">
-                  <i class="far fa-people-arrows nav-icon"></i>
+                  <i class="fas fa-network-wired nav-icon"></i>
                   <p>Pekerjaan</p>
                 </a>
               </li>
@@ -98,9 +98,9 @@
                     </a>
                 </li>
             </ul>
-            
+
           </li>
-         
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

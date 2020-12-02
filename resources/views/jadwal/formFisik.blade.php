@@ -14,13 +14,13 @@
             <td>1</td>
             <td>Permohonan Pemeriksaan (Kontraktor)</td>
             <td><input class="form-control" type="text" name="termin_tgl_1" id="termin_tgl_1" value="{{ $termin->termin_tgl_1 ?? '' }}" data-inputmask-alias="datetime" data-inputmask-inputformat="dd-mm-yyyy" data-mask></td>
-            <td></td>
+            <td><input class="form-control" type="text" name="termin_no_1" id="termin_no_1" value="{{ $termin->termin_no_1 ?? '' }}"></td>
         </tr>
         <tr>
             <td>2</td>
             <td>Lap. Kemajuan Pekerjaan (Kontraktor)</td>
             <td><input class="form-control" type="text" name="termin_tgl_2" id="termin_tgl_2" value="{{ $termin->termin_tgl_2 ?? '' }}" data-inputmask-alias="datetime" data-inputmask-inputformat="dd-mm-yyyy" data-mask></td>
-            <td></td>
+            <td><input class="form-control" type="text" name="termin_no_2" id="termin_no_2" value="{{ $termin->termin_no_2 ?? '' }}"></td>
         </tr>
         <tr>
             <td>3</td>
@@ -58,7 +58,7 @@
             <td><input class="form-control" type="text" name="termin_tgl_8" id="termin_tgl_8" value="{{ $termin->termin_tgl_8 ?? '' }}"  data-inputmask-alias="datetime" data-inputmask-inputformat="dd-mm-yyyy" data-mask></td>
             <td><input class="form-control" type="text" name="termin_no_8" id="termin_no_8" value="{{ $termin->termin_no_8 ?? '' }}"></td>
         </tr>
-        
+
 
     </tbody>
 </table>
