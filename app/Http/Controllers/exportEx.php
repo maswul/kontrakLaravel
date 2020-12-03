@@ -306,7 +306,7 @@ class exportEx extends Controller
 
         //ganti sheet pajak
         $sheet = $ss->getSheetByName('pajak');
-        $sheet->setCellValue("D8", $db->pekerjaan['perusahaan']['npwp']); //npwp
+        $sheet->setCellValue("D9", $db->pekerjaan['perusahaan']['npwp']); //npwp
         //$nego = $db->pekerjaan['nego'] * 100 / 110;
         //$sheet->setCellValue("L16", $nego); //kalkulasi nego
         $sheet->setCellValue("D15", "Kode Rekening : ({$db->pekerjaan['kode_keg']}) {$db->pekerjaan['kode_rek']}"); //kode rek
