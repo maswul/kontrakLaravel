@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2020 at 08:36 AM
--- Server version: 10.4.16-MariaDB
--- PHP Version: 7.4.12
+-- Waktu pembuatan: 03 Des 2020 pada 03.57
+-- Versi server: 10.4.16-MariaDB
+-- Versi PHP: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `failed_jobs`
+-- Struktur dari tabel `failed_jobs`
 --
 
 CREATE TABLE `failed_jobs` (
@@ -40,7 +40,7 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `j_termins`
+-- Struktur dari tabel `j_termins`
 --
 
 CREATE TABLE `j_termins` (
@@ -104,7 +104,7 @@ CREATE TABLE `j_termins` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lelangs`
+-- Struktur dari tabel `lelangs`
 --
 
 CREATE TABLE `lelangs` (
@@ -152,7 +152,7 @@ CREATE TABLE `lelangs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `lelangs`
+-- Dumping data untuk tabel `lelangs`
 --
 
 INSERT INTO `lelangs` (`id`, `created_at`, `updated_at`, `tgl_0`, `tgl_1`, `no_1`, `tgl_2`, `no_2`, `tgl_3`, `no_3`, `tgl_4`, `no_4`, `tgl_5`, `no_5`, `tgl_6`, `no_6`, `tgl_7`, `no_7`, `tgl_8`, `no_8`, `tgl_9`, `no_9`, `tgl_10`, `no_10`, `tgl_11`, `no_11`, `tgl_12`, `no_12`, `tgl_13`, `no_13`, `tgl_14`, `no_14`, `tgl_15`, `no_15`, `tgl_16`, `tgl_17`, `no_17`, `tgl_18`, `no_18`, `tgl_19`, `pekerjaan_id`) VALUES
@@ -167,7 +167,7 @@ INSERT INTO `lelangs` (`id`, `created_at`, `updated_at`, `tgl_0`, `tgl_1`, `no_1
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Struktur dari tabel `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -177,7 +177,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `migrations`
+-- Dumping data untuk tabel `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -194,12 +194,13 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (32, '2020_11_30_210552_create_lelangs_table', 1),
 (33, '2020_12_02_053204_create_termyns_table', 2),
 (34, '2020_12_02_113659_add_column_to_perusahaans', 3),
-(35, '2020_12_02_113939_chg_column_to_perusahaans', 4);
+(35, '2020_12_02_113939_chg_column_to_perusahaans', 4),
+(36, '2020_12_03_054249_add_col_to_pekerjaans2', 5);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `password_resets`
+-- Struktur dari tabel `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -211,7 +212,7 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pekerjaans`
+-- Struktur dari tabel `pekerjaans`
 --
 
 CREATE TABLE `pekerjaans` (
@@ -229,28 +230,31 @@ CREATE TABLE `pekerjaans` (
   `penawaran` int(11) NOT NULL,
   `nego` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `nama_monitoring` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `perusahaan_pengawas` int(11) DEFAULT NULL,
+  `nip_monitoring` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `pekerjaans`
+-- Dumping data untuk tabel `pekerjaans`
 --
 
-INSERT INTO `pekerjaans` (`id`, `perusahaan_id`, `program`, `kegiatan`, `pekerjaan`, `tipe`, `tahun`, `kode_rek`, `kode_keg`, `dpa_skpd`, `hps`, `penawaran`, `nego`, `created_at`, `updated_at`) VALUES
-(4, 1, 'Program Pengembangan Kinerja Pengelolaan Air Minum dan Sanitasi', 'Penyelenggaraan Sistem Penyediaan Air Minum', 'Dsn. Karangpilang, Desa Kedungrejo, Kec. Modo, Kab. Lamongan; Desa Sumberharjo, Kec. Sumberejo, Kab. Bojonegoro; Desa Sugihwaras, Kec. Ngraho, Kab. Bojonegoro', 3, 2020, '5 2 2  24 01', '10335003', '914/207.P/203.2/2020 Tanggal 12 Oktober 2020', 41973400, 41890200, 41175200, '2020-12-01 03:26:23', '2020-12-01 09:33:44'),
-(5, 8, 'Program Pengembangan Kinerja Pengelolaan Air Minum dan Sanitasi', 'Penyelenggaraan Sistem Penyediaan Air Minum', 'Dsn. Karangpilang, Desa Kedungrejo, Kec. Modo, Kab. Lamongan; Desa Sumberharjo, Kec. Sumberejo, Kab. Bojonegoro; Desa Sugihwaras, Kec. Ngraho, Kab. Bojonegoro', 4, 2020, '5 2 2 24 01', '10335003', '914/207.P/203.2/2020 Tanggal 12 Oktober 2020', 23980000, 23050500, 22814000, '2020-12-01 03:30:13', '2020-12-01 09:04:12'),
-(6, 8, 'Program Pengembangan Kinerja Pengelolaan Air Minum dan Sanitasi', 'Penyelenggaraan Sistem Penyediaan Air Minum', 'Desa Munggugebang, Kec. Benjeng, Kab. Gresik; Desa Kandangan, Kec. Cerme, Kab. Gresik; Desa Ngasin, Kec. Balongpanggang, Kab. Gresik; Desa Jatiklabang, Kec. Jatirogo, Kab. Tuban; Desa Punggulrejo, Kec. Rengel, Kab. Tuban', 4, 2020, '5 2 2 24 01', '10335003', '914/207.P/203.2/2020 Tanggal 12 Oktober 2020', 39985000, 39671500, 39589000, '2020-12-01 03:53:51', '2020-12-01 09:04:32'),
-(7, 6, 'Program Pengembangan Kinerja Pengelolaan Air Minum dan Sanitasi', 'Penyelenggaraan Sistem Penyediaan Air Minum', 'Dsn. Karangpilang, Desa Kedungrejo, Kec. Modo, Kab. Lamongan', 2, 2020, '5 2 2 24 01', '10335003', '914/207.P/203.2/2020 Tanggal 12 Oktober 2020', 0, 0, 197038600, '2020-12-01 23:22:14', '2020-12-01 23:22:14'),
-(8, 3, 'Program Pengembangan Kinerja Pengelolaan Air Minum dan Sanitasi', 'Penyelenggaraan Sistem Penyediaan Air Minum', 'Desa Munggugebang, Kec. Benjeng, Kab. Gresik', 2, 2020, '5 2 2 24 01', '10335003', '914/207.P/203.2/2020 Tanggal 12 Oktober 2020', 0, 0, 198320100, '2020-12-01 23:23:14', '2020-12-01 23:23:14'),
-(9, 4, 'Program Pengembangan Kinerja Pengelolaan Air Minum dan Sanitasi', 'Penyelenggaraan Sistem Penyediaan Air Minum', 'Desa Ngasin, Kec. Balongpanggang, Kab. Gresik', 2, 2020, '5 2 2 24 01', '10335003', '914/207.P/203.2/2020 Tanggal 12 Oktober 2020', 199100200, 198905800, 198903100, '2020-12-02 02:44:13', '2020-12-02 02:44:13'),
-(10, 4, 'Program Pengembangan Kinerja Pengelolaan Air Minum dan Sanitasi', 'Penyelenggaraan Sistem Penyediaan Air Minum', 'Desa Jatiklabang, Kec. Jatirogo, Kab. Tuban', 2, 2020, '5 2 2 24 01', '10335003', '914/207.P/203.2/2020 Tanggal 12 Oktober 2020', 199100500, 197699300, 197645800, '2020-12-02 03:12:44', '2020-12-02 03:12:44'),
-(11, 15, 'Program Pengembangan Kinerja Pengelolaan Air Minum dan Sanitasi', 'Penyelenggaraan Sistem Penyediaan Air Minum', 'Desa Umbulan Kec. Winongan Kab. Pasuruan, Desa Sidepan Kec. Winongan Kab. Pasuruan, Desa Ledokombo Kec. Sumber Kab. Probolinggo, Desa Slawu Kec. Patrang Kab. Jember, Desa Bintoro Kec. Patrang Kab. Jember', 4, 2020, '5 2 2 24 01', '10335003', '914/207.P/203.2/2020 Tanggal 12 Oktober 2020', 39814500, 38703500, 38676000, '2020-12-02 06:25:27', '2020-12-02 06:25:27'),
-(12, 16, 'Program Pengembangan Kinerja Pengelolaan Air Minum dan Sanitasi', 'Penyelenggaraan Sistem Penyediaan Air Minum', 'Desa Klangon, Kec. Saradan, Kab. Madiun', 2, 2020, '5 2 2 24 01', '10335003', '914/207.P/203.2/2020 Tanggal 12 Oktober 2020', 199809100, 198434300, 196735000, '2020-12-02 06:42:28', '2020-12-02 06:42:28');
+INSERT INTO `pekerjaans` (`id`, `perusahaan_id`, `program`, `kegiatan`, `pekerjaan`, `tipe`, `tahun`, `kode_rek`, `kode_keg`, `dpa_skpd`, `hps`, `penawaran`, `nego`, `created_at`, `updated_at`, `nama_monitoring`, `perusahaan_pengawas`, `nip_monitoring`) VALUES
+(4, 1, 'Program Pengembangan Kinerja Pengelolaan Air Minum dan Sanitasi', 'Penyelenggaraan Sistem Penyediaan Air Minum', 'Dsn. Karangpilang, Desa Kedungrejo, Kec. Modo, Kab. Lamongan; Desa Sumberharjo, Kec. Sumberejo, Kab. Bojonegoro; Desa Sugihwaras, Kec. Ngraho, Kab. Bojonegoro', 3, 2020, '5 2 2  24 01', '10335003', '914/207.P/203.2/2020 Tanggal 12 Oktober 2020', 41973400, 41890200, 41175200, '2020-12-01 03:26:23', '2020-12-01 09:33:44', NULL, NULL, NULL),
+(5, 8, 'Program Pengembangan Kinerja Pengelolaan Air Minum dan Sanitasi', 'Penyelenggaraan Sistem Penyediaan Air Minum', 'Dsn. Karangpilang, Desa Kedungrejo, Kec. Modo, Kab. Lamongan; Desa Sumberharjo, Kec. Sumberejo, Kab. Bojonegoro; Desa Sugihwaras, Kec. Ngraho, Kab. Bojonegoro', 4, 2020, '5 2 2 24 01', '10335003', '914/207.P/203.2/2020 Tanggal 12 Oktober 2020', 23980000, 23050500, 22814000, '2020-12-01 03:30:13', '2020-12-03 02:24:30', 'WULYO HENGKY SUGIHARTO, S.T.', NULL, '199305292019031009'),
+(6, 8, 'Program Pengembangan Kinerja Pengelolaan Air Minum dan Sanitasi', 'Penyelenggaraan Sistem Penyediaan Air Minum', 'Desa Munggugebang, Kec. Benjeng, Kab. Gresik; Desa Kandangan, Kec. Cerme, Kab. Gresik; Desa Ngasin, Kec. Balongpanggang, Kab. Gresik; Desa Jatiklabang, Kec. Jatirogo, Kab. Tuban; Desa Punggulrejo, Kec. Rengel, Kab. Tuban', 4, 2020, '5 2 2 24 01', '10335003', '914/207.P/203.2/2020 Tanggal 12 Oktober 2020', 39985000, 39671500, 39589000, '2020-12-01 03:53:51', '2020-12-03 02:25:04', 'WULYO HENGKY SUGIHARTO, S.T.', NULL, '199305292019031009'),
+(7, 6, 'Program Pengembangan Kinerja Pengelolaan Air Minum dan Sanitasi', 'Penyelenggaraan Sistem Penyediaan Air Minum', 'Dsn. Karangpilang, Desa Kedungrejo, Kec. Modo, Kab. Lamongan', 2, 2020, '5 2 2 24 01', '10335003', '914/207.P/203.2/2020 Tanggal 12 Oktober 2020', 0, 0, 197038600, '2020-12-01 23:22:14', '2020-12-01 23:22:14', NULL, NULL, NULL),
+(8, 3, 'Program Pengembangan Kinerja Pengelolaan Air Minum dan Sanitasi', 'Penyelenggaraan Sistem Penyediaan Air Minum', 'Desa Munggugebang, Kec. Benjeng, Kab. Gresik', 2, 2020, '5 2 2 24 01', '10335003', '914/207.P/203.2/2020 Tanggal 12 Oktober 2020', 0, 0, 198320100, '2020-12-01 23:23:14', '2020-12-01 23:23:14', NULL, NULL, NULL),
+(9, 4, 'Program Pengembangan Kinerja Pengelolaan Air Minum dan Sanitasi', 'Penyelenggaraan Sistem Penyediaan Air Minum', 'Desa Ngasin, Kec. Balongpanggang, Kab. Gresik', 2, 2020, '5 2 2 24 01', '10335003', '914/207.P/203.2/2020 Tanggal 12 Oktober 2020', 199100200, 198905800, 198903100, '2020-12-02 02:44:13', '2020-12-03 01:12:37', 'WULYO HENGKY SUGIHARTO, S.T.', 8, NULL),
+(10, 4, 'Program Pengembangan Kinerja Pengelolaan Air Minum dan Sanitasi', 'Penyelenggaraan Sistem Penyediaan Air Minum', 'Desa Jatiklabang, Kec. Jatirogo, Kab. Tuban', 2, 2020, '5 2 2 24 01', '10335003', '914/207.P/203.2/2020 Tanggal 12 Oktober 2020', 199100500, 197699300, 197645800, '2020-12-02 03:12:44', '2020-12-03 02:50:08', 'WULYO HENGKY SUGIHARTO, S.T.', 8, '199305292019031009'),
+(11, 15, 'Program Pengembangan Kinerja Pengelolaan Air Minum dan Sanitasi', 'Penyelenggaraan Sistem Penyediaan Air Minum', 'Desa Umbulan Kec. Winongan Kab. Pasuruan, Desa Sidepan Kec. Winongan Kab. Pasuruan, Desa Ledokombo Kec. Sumber Kab. Probolinggo, Desa Slawu Kec. Patrang Kab. Jember, Desa Bintoro Kec. Patrang Kab. Jember', 4, 2020, '5 2 2 24 01', '10335003', '914/207.P/203.2/2020 Tanggal 12 Oktober 2020', 39814500, 38703500, 38676000, '2020-12-02 06:25:27', '2020-12-02 06:25:27', NULL, NULL, NULL),
+(12, 16, 'Program Pengembangan Kinerja Pengelolaan Air Minum dan Sanitasi', 'Penyelenggaraan Sistem Penyediaan Air Minum', 'Desa Klangon, Kec. Saradan, Kab. Madiun', 2, 2020, '5 2 2 24 01', '10335003', '914/207.P/203.2/2020 Tanggal 12 Oktober 2020', 199809100, 198434300, 196735000, '2020-12-02 06:42:28', '2020-12-02 06:42:28', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `perusahaans`
+-- Struktur dari tabel `perusahaans`
 --
 
 CREATE TABLE `perusahaans` (
@@ -273,7 +277,7 @@ CREATE TABLE `perusahaans` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `perusahaans`
+-- Dumping data untuk tabel `perusahaans`
 --
 
 INSERT INTO `perusahaans` (`id`, `nama`, `direktur`, `npwp`, `bank`, `rekening`, `alamat`, `created_at`, `updated_at`, `kota`, `notaris`, `notaris_tanggal`, `notaris_no`, `perubahan_notaris`, `perubahan_notaris_tanggal`, `perubahan_notaris_no`) VALUES
@@ -294,7 +298,7 @@ INSERT INTO `perusahaans` (`id`, `nama`, `direktur`, `npwp`, `bank`, `rekening`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `termin_fisiks`
+-- Struktur dari tabel `termin_fisiks`
 --
 
 CREATE TABLE `termin_fisiks` (
@@ -321,7 +325,7 @@ CREATE TABLE `termin_fisiks` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `termin_pengawasans`
+-- Struktur dari tabel `termin_pengawasans`
 --
 
 CREATE TABLE `termin_pengawasans` (
@@ -343,7 +347,7 @@ CREATE TABLE `termin_pengawasans` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `termin_pengawasans`
+-- Dumping data untuk tabel `termin_pengawasans`
 --
 
 INSERT INTO `termin_pengawasans` (`id`, `created_at`, `updated_at`, `termin_tgl_1`, `termin_tgl_2`, `termin_no_2`, `termin_tgl_3`, `termin_no_3`, `termin_tgl_4`, `termin_no_4`, `termin_tgl_5`, `termin_no_5`, `termin_tgl_6`, `termin_no_6`, `pekerjaan_id`) VALUES
@@ -353,7 +357,7 @@ INSERT INTO `termin_pengawasans` (`id`, `created_at`, `updated_at`, `termin_tgl_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `termin_perencanaans`
+-- Struktur dari tabel `termin_perencanaans`
 --
 
 CREATE TABLE `termin_perencanaans` (
@@ -379,7 +383,7 @@ CREATE TABLE `termin_perencanaans` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `termin_perencanaans`
+-- Dumping data untuk tabel `termin_perencanaans`
 --
 
 INSERT INTO `termin_perencanaans` (`id`, `created_at`, `updated_at`, `termin_tgl_1`, `termin_tgl_2`, `termin_no_2`, `termin_tgl_3`, `termin_tgl_4`, `termin_tgl_5`, `termin_no_5`, `termin_tgl_6`, `termin_no_6`, `termin_tgl_7`, `termin_no_7`, `termin_tgl_8`, `termin_no_8`, `termin_tgl_9`, `termin_no_9`, `pekerjaan_id`) VALUES
@@ -388,7 +392,7 @@ INSERT INTO `termin_perencanaans` (`id`, `created_at`, `updated_at`, `termin_tgl
 -- --------------------------------------------------------
 
 --
--- Table structure for table `termyns`
+-- Struktur dari tabel `termyns`
 --
 
 CREATE TABLE `termyns` (
@@ -417,14 +421,14 @@ CREATE TABLE `termyns` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `termyns`
+-- Dumping data untuk tabel `termyns`
 --
 
 INSERT INTO `termyns` (`id`, `created_at`, `updated_at`, `termin_tgl_1`, `termin_no_1`, `termin_tgl_2`, `termin_no_2`, `termin_tgl_3`, `termin_no_3`, `termin_tgl_4`, `termin_no_4`, `termin_tgl_5`, `termin_no_5`, `termin_tgl_6`, `termin_no_6`, `termin_tgl_7`, `termin_no_7`, `termin_tgl_8`, `termin_no_8`, `termin_tgl_9`, `termin_no_9`, `pekerjaan_id`) VALUES
 (1, '2020-12-01 23:14:40', '2020-12-01 23:14:40', '2020-10-27', NULL, '2020-10-27', '20676', '2020-10-27', NULL, '2020-12-10', NULL, '2020-12-10', '23648', '2020-12-10', '23650', '2020-12-11', '23774', '2020-12-11', '23776', '2020-12-14', '23860', 4),
-(2, '2020-12-01 23:17:18', '2020-12-01 23:17:18', '2020-12-09', NULL, '2020-12-10', '23652', '2020-12-11', '23778', '2020-12-11', '23780', '2020-12-14', '23862', '2020-12-15', '23918', NULL, NULL, NULL, NULL, NULL, NULL, 5),
+(2, '2020-12-01 23:17:18', '2020-12-03 02:00:47', '2020-12-09', 'ID/013/XII/2020', '2020-12-10', '23652', '2020-12-11', '23778', '2020-12-11', '23780', '2020-12-14', '23862', '2020-12-15', '23918', NULL, NULL, NULL, NULL, NULL, NULL, 5),
 (3, '2020-12-01 23:18:19', '2020-12-01 23:18:19', '2020-12-09', NULL, '2020-12-10', '23653', '2020-12-11', '23779', '2020-12-11', '23781', '2020-12-14', '23863', '2020-12-15', '23919', NULL, NULL, NULL, NULL, NULL, NULL, 6),
-(4, '2020-12-02 02:53:13', '2020-12-02 02:53:13', '2020-12-09', NULL, '2020-12-09', NULL, '2020-12-09', '23514', '2020-12-10', '23656', '2020-12-11', '23784', '2020-12-11', '23789', '2020-12-11', '23794', '2020-12-14', '23867', NULL, NULL, 9),
+(4, '2020-12-02 02:53:13', '2020-12-02 22:05:04', '2020-12-09', 'MRM/016/XI/2020', '2020-12-09', 'MRM/017/XI/2020', '2020-12-09', '23514', '2020-12-10', '23656', '2020-12-11', '23784', '2020-12-11', '23789', '2020-12-11', '23794', '2020-12-14', '23867', NULL, NULL, 9),
 (5, '2020-12-02 03:18:29', '2020-12-02 03:18:29', '2020-12-09', NULL, '2020-12-09', NULL, '2020-12-09', '23515', '2020-12-10', '23657', '2020-12-11', '23785', '2020-12-11', '23790', '2020-12-11', '23795', '2020-12-14', '23867', NULL, NULL, 10),
 (6, '2020-12-02 06:31:24', '2020-12-02 06:32:47', '2020-12-09', NULL, '2020-12-23', '23638', '2020-12-23', '23749', '2020-12-23', '23751', '2020-12-23', '23851', '2020-12-23', '23916', NULL, NULL, NULL, NULL, NULL, NULL, 11),
 (7, '2020-12-02 07:15:28', '2020-12-02 07:15:28', '2020-12-02', NULL, '2020-12-02', NULL, '2020-12-02', NULL, '2020-12-02', NULL, '2020-12-02', NULL, '2020-12-02', NULL, '2020-12-02', NULL, '2020-12-02', NULL, NULL, NULL, 12);
@@ -432,7 +436,7 @@ INSERT INTO `termyns` (`id`, `created_at`, `updated_at`, `termin_tgl_1`, `termin
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -451,150 +455,150 @@ CREATE TABLE `users` (
 --
 
 --
--- Indexes for table `failed_jobs`
+-- Indeks untuk tabel `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Indexes for table `j_termins`
+-- Indeks untuk tabel `j_termins`
 --
 ALTER TABLE `j_termins`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `lelangs`
+-- Indeks untuk tabel `lelangs`
 --
 ALTER TABLE `lelangs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `lelangs_pekerjaan_id_unique` (`pekerjaan_id`);
 
 --
--- Indexes for table `migrations`
+-- Indeks untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `password_resets`
+-- Indeks untuk tabel `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
--- Indexes for table `pekerjaans`
+-- Indeks untuk tabel `pekerjaans`
 --
 ALTER TABLE `pekerjaans`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `perusahaans`
+-- Indeks untuk tabel `perusahaans`
 --
 ALTER TABLE `perusahaans`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `termin_fisiks`
+-- Indeks untuk tabel `termin_fisiks`
 --
 ALTER TABLE `termin_fisiks`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `termin_fisiks_pekerjaan_id_unique` (`pekerjaan_id`);
 
 --
--- Indexes for table `termin_pengawasans`
+-- Indeks untuk tabel `termin_pengawasans`
 --
 ALTER TABLE `termin_pengawasans`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `termin_pengawasans_pekerjaan_id_unique` (`pekerjaan_id`);
 
 --
--- Indexes for table `termin_perencanaans`
+-- Indeks untuk tabel `termin_perencanaans`
 --
 ALTER TABLE `termin_perencanaans`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `termin_perencanaans_pekerjaan_id_unique` (`pekerjaan_id`);
 
 --
--- Indexes for table `termyns`
+-- Indeks untuk tabel `termyns`
 --
 ALTER TABLE `termyns`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `termyns_pekerjaan_id_unique` (`pekerjaan_id`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `failed_jobs`
+-- AUTO_INCREMENT untuk tabel `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `j_termins`
+-- AUTO_INCREMENT untuk tabel `j_termins`
 --
 ALTER TABLE `j_termins`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `lelangs`
+-- AUTO_INCREMENT untuk tabel `lelangs`
 --
 ALTER TABLE `lelangs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `migrations`
+-- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
--- AUTO_INCREMENT for table `pekerjaans`
+-- AUTO_INCREMENT untuk tabel `pekerjaans`
 --
 ALTER TABLE `pekerjaans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT for table `perusahaans`
+-- AUTO_INCREMENT untuk tabel `perusahaans`
 --
 ALTER TABLE `perusahaans`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `termin_fisiks`
+-- AUTO_INCREMENT untuk tabel `termin_fisiks`
 --
 ALTER TABLE `termin_fisiks`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `termin_pengawasans`
+-- AUTO_INCREMENT untuk tabel `termin_pengawasans`
 --
 ALTER TABLE `termin_pengawasans`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `termin_perencanaans`
+-- AUTO_INCREMENT untuk tabel `termin_perencanaans`
 --
 ALTER TABLE `termin_perencanaans`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `termyns`
+-- AUTO_INCREMENT untuk tabel `termyns`
 --
 ALTER TABLE `termyns`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
