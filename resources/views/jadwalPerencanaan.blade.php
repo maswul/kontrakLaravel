@@ -21,11 +21,11 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            
+
             <div id="alert-ku" class="alert alert-success text-center" role="alert">
                 Pekerjaan {{ $pekerjaan }}
             </div>
-            
+
         </div>
     </div>
 
@@ -49,10 +49,10 @@
                 </ul>
             </div>
             <div class="card-body">
-               
-                    
+
+
                     <div class="tab-content" id="custom-tabs-one-tabContent">
-                    
+
                         <div class="tab-pane fade" id="lelang-tab-home" role="tabpanel" aria-labelledby="lelang-home-tab">
                             @include('jadwal.formLelang')
                         </div>
@@ -60,7 +60,7 @@
                             @switch($pekerjaan_tipe)
                                 @case(1)
                                     {{-- Jasa Konsultasi --}}
-                                    
+
                                     @break
                                 @case(2)
                                     {{-- Fisik --}}
@@ -74,18 +74,18 @@
                                     {{-- Pengawasan --}}
                                     @include('jadwal.formPengawasan')
                                     @break
-                                    
+
                             @endswitch
-                            
+
                         </div>
-                        
+
                     </div>
-                
-                
+
+
             </div>
             <div class="card-footer">
                 <button id="simpan" type="submit" class="btn btn-primary float-right">Simpan</button>
-                <a name="" id="" class="btn btn-default" href="{{ url('pekerjaan') }}" role="button">Batal</a>
+                <a name="" id="" class="btn btn-default" href="{{ route('pekerjaan.list') }}" role="button">Batal</a>
             </div>
         </div>
     </div>
@@ -119,7 +119,7 @@
         $("#simpan").click(function () {
             $("#dataForm").submit();
         })
-        
+
     });
 </script>
 @endsection

@@ -16,6 +16,7 @@ class AddColToPekerjaans2 extends Migration
         Schema::table('pekerjaans', function (Blueprint $table) {
             //
             $table->string('nama_monitoring')->nullable();
+            $table->string('nip_monitoring')->nullable();
             $table->integer('perusahaan_pengawas')->nullable();
 
         });

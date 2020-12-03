@@ -22,7 +22,7 @@ use App\Http\Controllers\LelangController;
 */
 
 Route::get('/', function () {
-    return redirect('/pekerjaan');
+    return redirect(route('pekerjaan.list'));
 });
 
 //Route::get('/perusahaan', [PerusahaanControlleer::class,'index']);
@@ -49,5 +49,8 @@ Route::post('tanggal/simpan', [LelangController::class, 'store'])->name('lelang.
 
 Route::group(['prefix' => 'pekerjaans'], function () {
     Route::get('list.html',[CPekerjaan::class,'index'])->name('pekerjaan.list');
-    Route::get('{id}/tambah.html', [CPekerjaan::class,'edit'])->name('pekerjaan.tambah');
+    Route::get('rubah/{id}.html', [CPekerjaan::class,'edit'])->name('pekerjaan.tambah');
+    Route::get('tambah.html', [CPekerjaan::class,'tambah'])->name('pekerjaan.baru');
+    Route::post('simpan.html', [CPekerjaan::class, 'store'])->name('pekerjaan.simpan');
+    Route::post('hapus.html', [CPekerjaan::class, 'hapus'])->name('pekerjaan.hapus');
 });

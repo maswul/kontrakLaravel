@@ -86,7 +86,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{url("pekerjaan")}}" class="nav-link @yield('nav_pekerjaan')">
+                <a href="{{route('pekerjaan.list')}}" class="nav-link @yield('nav_pekerjaan')">
                   <i class="fas fa-network-wired nav-icon"></i>
                   <p>Pekerjaan</p>
                 </a>

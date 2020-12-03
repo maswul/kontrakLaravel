@@ -133,7 +133,7 @@ class LelangController extends Controller
             $data['pekerjaan_tipe'] = Pekerjaan::find($id)->tipe;
             return view('jadwalperencanaan', $data);
         }else{
-            return redirect('pekerjaan');
+            return redirect(route('pekerjaan.list'));
         }
     }
     public function store(Request $request)
@@ -157,6 +157,6 @@ class LelangController extends Controller
         termyn::updateOrCreate(["id" => $termin_id], $data);
 
 
-        return redirect('pekerjaan')->with("pesan", "Jadwal telah disimpan!");
+        return redirect(route('pekerjaan.list'))->with("pesan", "Jadwal telah disimpan!");
     }
 }
