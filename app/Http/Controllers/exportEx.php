@@ -95,6 +95,234 @@ class exportEx extends Controller
 
     }
 
+    function ringkasan_rencana($id)
+    {
+        //$db = JTermin::with('pekerjaan.perusahaan')->get()->find($id);
+        $pek = Pekerjaan::find($id)->toArray();
+        $per = Perusahaan::whereId($pek['perusahaan_id'])->first()->toArray();
+        $lelang = Lelang::wherePekerjaanId($id)->first()->toArray();
+        $db = Lelang::wherePekerjaanId($id)->first();
+        $termin = termyn::wherePekerjaanId($id)->first()->toArray();
+
+        $file = storage_path('app/template/ringkasan/rencana.xls');
+
+        $reader = new Xls;
+        //$reader->setReadDataOnly(true);
+        //$reader->setLoadSheetsOnly('sheet1');
+        $ss = $reader->load($file);
+
+        $sheet = $ss->getSheetByName('ringkasan');
+        //pelan-pelan isi data
+
+
+        $sheet->setCellValue("H10", "{$pek['kode_rek']} ({$pek['kode_keg']})"); //Rupiah nego
+        //$sheet->setCellValue("H11", $pek['program']); //Program
+        //$sheet->setCellValue("H12", $pek['kegiatan']); //kegiatan
+        $sheet->setCellValue("J7", $pek['nego']); //Rupiah nego
+        $sheet->setCellValue("H8", "Pekerjaan Perencanaan Teknik Pembangunan Sarana Prasarana Air Bersih {$pek['pekerjaan']}"); //pekerjaan
+
+        $sheet->setCellValue("H14", $per['bank']); //Bank
+        $sheet->setCellValue("S14", $per['rekening']); //Rekening
+        $sheet->setCellValue("H15", $per['nama']); //nama perushaan
+        $sheet->setCellValue("H17", $per['alamat']); //alamat
+        $sheet->setCellValue("H18", $per['direktur']);
+
+        //tanggal
+        $sheet->setCellValue("J19", Carbon::parse($db->tgl_17)->isoFormat('D MMMM Y')); //tglSPK
+        $sheet->setCellValue("P19", "602.1/ {$db->no_17} /105.4/2020"); //tglSPK
+
+        $sheet->setCellValue("J20", Carbon::parse($db->tgl_18)->isoFormat('D MMMM Y')); //tglSPMK
+        $sheet->setCellValue("P20", "602.1/ {$db->no_18} /105.4/2020"); //tglSPK
+
+        $sheet->setCellValue("J21", Carbon::parse($db->tgl_19)->isoFormat('D MMMM Y')); //tglSPMK
+
+        //bagian catatan
+        $sheet->setCellValue("L37", Carbon::parse($db->tgl_12)->isoFormat('D MMMM Y')); //tglSPMK
+        $sheet->setCellValue("P37", "602.1/ {$db->no_12} /105.4/2020"); //tglSPK
+
+        //bagian catatan
+        $sheet->setCellValue("L38", Carbon::parse($db->tgl_15)->isoFormat('D MMMM Y')); //tglSPMK
+        $sheet->setCellValue("P38", "602.1/ {$db->no_15} /105.4/2020"); //tglSPK
+
+        //ganti sheet kwitansi
+        $sheet = $ss->getSheetByName('kwitansi');
+        $tgl_spk = Carbon::parse($db->tgl_17)->isoFormat('D MMMM Y');
+        $sheet->setCellValue("D12", "Pembayaran 100% Pekerjaan Perencanaan Teknik Pembangunan Sarana Prasarana Air Bersih {$db->pekerjaan['pekerjaan']}, Sesuai Surat Perintah Kerja Nomor : 602.1/ {$db->no_17} /105.4/2020, Tanggal : {$tgl_spk}"); //isiKwitansi
+
+        $terbilang = ucwords(strtolower(Terbilang::make($db->pekerjaan['nego'], " Rupiah")));
+        $sheet->setCellValue("D10", "( $terbilang )");
+
+        //ganti sheet pajak
+        $sheet = $ss->getSheetByName('pajak');
+        $sheet->setCellValue("D8", $db->pekerjaan['perusahaan']['npwp']); //npwp
+        //$nego = $db->pekerjaan['nego'] * 100 / 110;
+        //$sheet->setCellValue("L16", $nego); //kalkulasi nego
+        $sheet->setCellValue("D15", "Kode Rekening : ({$db->pekerjaan['kode_keg']}) {$db->pekerjaan['kode_rek']}"); //kode rek
+
+
+        $writer = new Xlsx($ss);
+        $judul_50 = substr($pek['pekerjaan'], 0, 30);
+        $fileName = "Ringkasan_{$per['nama']}_{$judul_50}.xlsx";
+        //$writer->save("");
+
+
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment; filename="' . $fileName . '"');
+        $writer->save('php://output');
+    }
+
+    function ringkasan_awas($id)
+    {
+        //$db = JTermin::with('pekerjaan.perusahaan')->get()->find($id);
+        $pek = Pekerjaan::find($id)->toArray();
+        $per = Perusahaan::whereId($pek['perusahaan_id'])->first()->toArray();
+        $lelang = Lelang::wherePekerjaanId($id)->first()->toArray();
+        $db = Lelang::wherePekerjaanId($id)->first();
+        $termin = termyn::wherePekerjaanId($id)->first()->toArray();
+
+        $file = storage_path('app/template/ringkasan/awas.xls');
+
+        $reader = new Xls;
+        //$reader->setReadDataOnly(true);
+        //$reader->setLoadSheetsOnly('sheet1');
+        $ss = $reader->load($file);
+
+        $sheet = $ss->getSheetByName('ringkasan');
+        //pelan-pelan isi data
+
+
+        $sheet->setCellValue("H6", "{$pek['kode_rek']} ({$pek['kode_keg']})"); //Rupiah nego
+        //$sheet->setCellValue("H11", $pek['program']); //Program
+        //$sheet->setCellValue("H12", $pek['kegiatan']); //kegiatan
+        $sheet->setCellValue("J7", $pek['nego']); //Rupiah nego
+        $sheet->setCellValue("H8", "Pekerjaan Pengawasan Fisik Pembangunan Sarana Prasarana Air Bersih {$pek['pekerjaan']}"); //pekerjaan
+
+        $sheet->setCellValue("H14", $per['bank']); //Bank
+        $sheet->setCellValue("S14", $per['rekening']); //Rekening
+        $sheet->setCellValue("H15", $per['nama']); //nama perushaan
+        $sheet->setCellValue("H17", $per['alamat']); //alamat
+        $sheet->setCellValue("H18", $per['direktur']);
+
+        //tanggal
+        $sheet->setCellValue("J19", Carbon::parse($db->tgl_17)->isoFormat('D MMMM Y')); //tglSPK
+        $sheet->setCellValue("P19", "602.1/ {$db->no_17} /105.4/2020"); //tglSPK
+
+        $sheet->setCellValue("J20", Carbon::parse($db->tgl_18)->isoFormat('D MMMM Y')); //tglSPMK
+        $sheet->setCellValue("P20", "602.1/ {$db->no_18} /105.4/2020"); //tglSPK
+
+        $sheet->setCellValue("J21", Carbon::parse($db->tgl_19)->isoFormat('D MMMM Y')); //tglSPMK
+
+        //bagian catatan
+        $sheet->setCellValue("L37", Carbon::parse($db->tgl_12)->isoFormat('D MMMM Y')); //tglSPMK
+        $sheet->setCellValue("P37", "602.1/ {$db->no_12} /105.4/2020"); //tglSPK
+
+        //bagian catatan
+        $sheet->setCellValue("L38", Carbon::parse($db->tgl_15)->isoFormat('D MMMM Y')); //tglSPMK
+        $sheet->setCellValue("P38", "602.1/ {$db->no_15} /105.4/2020"); //tglSPK
+
+        //ganti sheet kwitansi
+        $sheet = $ss->getSheetByName('kwitansi');
+        $tgl_spk = Carbon::parse($db->tgl_17)->isoFormat('D MMMM Y');
+        $sheet->setCellValue("D12", "Pembayaran 100% Pekerjaan Perencanaan Teknik Pembangunan Sarana Prasarana Air Bersih {$db->pekerjaan['pekerjaan']}, Sesuai Surat Perintah Kerja Nomor : 602.1/ {$db->no_17} /105.4/2020, Tanggal : {$tgl_spk}"); //isiKwitansi
+
+        $terbilang = ucwords(strtolower(Terbilang::make($db->pekerjaan['nego'], " Rupiah")));
+        $sheet->setCellValue("D10", "( $terbilang )");
+
+        //ganti sheet pajak
+        $sheet = $ss->getSheetByName('pajak');
+        $sheet->setCellValue("D8", $db->pekerjaan['perusahaan']['npwp']); //npwp
+        //$nego = $db->pekerjaan['nego'] * 100 / 110;
+        //$sheet->setCellValue("L16", $nego); //kalkulasi nego
+        $sheet->setCellValue("D15", "Kode Rekening : ({$db->pekerjaan['kode_keg']}) {$db->pekerjaan['kode_rek']}"); //kode rek
+
+
+        $writer = new Xlsx($ss);
+        $judul_50 = substr($pek['pekerjaan'], 0, 30);
+        $fileName = "Ringkasan_{$per['nama']}_{$judul_50}.xlsx";
+        //$writer->save("");
+
+
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment; filename="' . $fileName . '"');
+        $writer->save('php://output');
+    }
+
+    function ringkasan_fisik($id)
+    {
+        //$db = JTermin::with('pekerjaan.perusahaan')->get()->find($id);
+        $pek = Pekerjaan::find($id)->toArray();
+        $per = Perusahaan::whereId($pek['perusahaan_id'])->first()->toArray();
+        $lelang = Lelang::wherePekerjaanId($id)->first()->toArray();
+        $db = Lelang::wherePekerjaanId($id)->first();
+        $termin = termyn::wherePekerjaanId($id)->first()->toArray();
+
+        $file = storage_path('app/template/ringkasan/fisik.xls');
+
+        $reader = new Xls;
+        //$reader->setReadDataOnly(true);
+        //$reader->setLoadSheetsOnly('sheet1');
+        $ss = $reader->load($file);
+
+        $sheet = $ss->getSheetByName('ringkasan');
+        //pelan-pelan isi data
+
+
+        $sheet->setCellValue("G10", "{$pek['kode_rek']} ({$pek['kode_keg']})"); //Rupiah nego
+        //$sheet->setCellValue("H11", $pek['program']); //Program
+        //$sheet->setCellValue("H12", $pek['kegiatan']); //kegiatan
+        $sheet->setCellValue("H12", $pek['nego']); //Rupiah nego
+        $sheet->setCellValue("G14", $pek['pekerjaan']); //pekerjaan
+
+        $sheet->setCellValue("G17", $per['bank']); //Bank
+        $sheet->setCellValue("N17", $per['rekening']); //Rekening
+        $sheet->setCellValue("G18", $per['nama']); //nama perushaan
+        $sheet->setCellValue("G20", $per['alamat']); //alamat
+        $sheet->setCellValue("G21", $per['direktur']);
+
+        //tanggal
+        $sheet->setCellValue("H22", Carbon::parse($db->tgl_17)->isoFormat('D MMMM Y')); //tglSPK
+        $sheet->setCellValue("M22", "602.1/ {$db->no_17} /105.4/2020"); //tglSPK
+
+        $sheet->setCellValue("H23", Carbon::parse($db->tgl_18)->isoFormat('D MMMM Y')); //tglSPMK
+        $sheet->setCellValue("M23", "602.1/ {$db->no_18} /105.4/2020"); //tglSPK
+
+        $sheet->setCellValue("H24", Carbon::parse($db->tgl_19)->isoFormat('D MMMM Y')); //tglSPMK
+
+        //bagian catatan
+        $sheet->setCellValue("J43", Carbon::parse($db->tgl_12)->isoFormat('D MMMM Y')); //tglSPMK
+        $sheet->setCellValue("M43", "602.1/ {$db->no_12} /105.4/2020"); //tglSPK
+
+        //bagian catatan
+        $sheet->setCellValue("J44", Carbon::parse($db->tgl_15)->isoFormat('D MMMM Y')); //tglSPMK
+        $sheet->setCellValue("M44", "602.1/ {$db->no_15} /105.4/2020"); //tglSPK
+
+        //ganti sheet kwitansi
+        $sheet = $ss->getSheetByName('kwitansi');
+        $tgl_spk = Carbon::parse($db->tgl_17)->isoFormat('D MMMM Y');
+        $sheet->setCellValue("D12", "Pembayaran 100% Pekerjaan Pembangunan Sarana Prasarana Air Bersih {$db->pekerjaan['pekerjaan']}, Sesuai Surat Perintah Kerja Nomor : 602.1/ {$db->no_17} /105.4/2020, Tanggal : {$tgl_spk}"); //isiKwitansi
+
+        $terbilang = ucwords(strtolower(Terbilang::make($db->pekerjaan['nego'], " Rupiah")));
+        $sheet->setCellValue("D10", "( $terbilang )");
+
+        //ganti sheet pajak
+        $sheet = $ss->getSheetByName('pajak');
+        $sheet->setCellValue("D8", $db->pekerjaan['perusahaan']['npwp']); //npwp
+        //$nego = $db->pekerjaan['nego'] * 100 / 110;
+        //$sheet->setCellValue("L16", $nego); //kalkulasi nego
+        $sheet->setCellValue("D15", "Kode Rekening : ({$db->pekerjaan['kode_keg']}) {$db->pekerjaan['kode_rek']}"); //kode rek
+
+
+        $writer = new Xlsx($ss);
+        $judul_50 = substr($pek['pekerjaan'], 0, 30);
+        $fileName = "Ringkasan_{$per['nama']}_{$judul_50}.xlsx";
+        //$writer->save("");
+
+
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment; filename="' . $fileName . '"');
+        $writer->save('php://output');
+    }
+
     public function dlperusahaan()
     {
         # code...
@@ -208,10 +436,11 @@ class exportEx extends Controller
                         break;
                     case 3:
                         //perencanaan
-                        $file = storage_path('app/template/kontrak.docx');
+                        $file = storage_path('app/template/termyn/rencana.docx');
                         $tugas = "Perencanaan Teknis Pembangunan Sarana Prasarana Air Bersih";
                         $namafile = "Perencanaan";
                         //$this->kon_perencanaan($id, $tugas, $file, $namafile);
+                        $this->kon_awas($id,$termin, $tugas,$file,$namafile);
                         break;
                     case 4:
                         //pengawasan
@@ -219,6 +448,38 @@ class exportEx extends Controller
                         $tugas = "Pengawasan Fisik Pembangunan Sarana Prasarana Air Bersih";
                         $namafile = "Pengawasan";
                         $this->kon_awas($id,$termin, $tugas,$file,$namafile);
+                        //$this->kon_perencanaan($id, $tugas, $file, $namafile);
+                        break;
+                }
+            }else{
+                return redirect(route('lelang', array("id" => $id)));
+            }
+        }
+    }
+
+    public function ringkasan ($id) {
+        $tipe = Pekerjaan::find($id)->tipe;
+        if ($tipe)
+        {
+            $termin = termyn::wherePekerjaanId($id)->value('id');
+            if ($termin)
+            {
+                switch ($tipe) {
+                    case 1:
+                        //jasakonsultansi
+                        break;
+                    case 2:
+                        //fisik
+
+                        $this->ringkasan_fisik($id);
+                        break;
+                    case 3:
+                        //perencanaan
+                        $this->ringkasan_rencana($id);
+                        break;
+                    case 4:
+                        //pengawasan
+                        $this->ringkasan_awas($id);
                         //$this->kon_perencanaan($id, $tugas, $file, $namafile);
                         break;
                 }
@@ -315,12 +576,13 @@ class exportEx extends Controller
         $tpl->setValue('DIREKTUR', $cv['direktur']);
         $tpl->setValue('PERUSAHAAN', $cv['nama']);
         $tpl->setValue('perusahaan', $cv['nama']);
+        $tpl->setValue('NAMA_MONITORING', $pekerjaan['nama_monitoring']);
         $tpl->setValue('KOTA', $cv['kota']);
         $tpl->setValue('PEKERJAAN_FULL',$data['pekerjaan_full'] );
 
         $judul_50 = substr($pekerjaan['pekerjaan'], 0, 30);
 
-        $filename = "kontrak {$nmfile} {$cv['nama']} {$judul_50}";
+        $filename = "Termin Pengawasan {$cv['nama']} {$judul_50}";
         header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document');
         header("Content-Disposition: attachment; filename=\"{$filename}.docx\"");
 
@@ -390,7 +652,7 @@ class exportEx extends Controller
 
         $judul_50 = substr($pekerjaan['pekerjaan'], 0, 30);
 
-        $filename = "kontrak {$nmfile} {$cv['nama']} {$judul_50}";
+        $filename = "termin {$nmfile} {$cv['nama']} {$judul_50}";
         header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document');
         header("Content-Disposition: attachment; filename=\"{$filename}.docx\"");
 

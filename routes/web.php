@@ -39,7 +39,7 @@ Route::get('/coba', [Jadwal::class,'coba']);
 Route::get('pajak/{id}', [exportEx::class,'pajak'])->name('cetak.pajak');
 Route::get('kontrak/{id}', [exportEx::class, 'kontrak'])->name('cetak.kontrak');
 Route::get( 'termin/{id}', [exportEx::class,'termin'])->name('cetak.termin');
-
+Route::get( 'ringkasan/{id}.html', [exportEx::class,'ringkasan'])->name('cetak.ringkasan');
 
 Route::get('download/perusahaan', [exportEx::class,'dlperusahaan'])->name('download.perusahaan');
 

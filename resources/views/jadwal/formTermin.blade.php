@@ -4,7 +4,7 @@
         <th style="width: 50px">No.</th>
         <th>Uraian</th>
         <th style="width: 200px">Tanggal</th>
-        <th style="width: 200px">Nomor</th>
+        <th style="width: 400px">Nomor</th>
     </tr>
     </thead>
     <tbody>
@@ -13,25 +13,25 @@
             <td>1</td>
             <td>Lap. Kemajuan Pek. Perencanaan (Konsultan)</td>
             <td><input class="form-control" type="text" name="termin_tgl_1" id="termin_tgl_1" value="{{ $termin->termin_tgl_1 ?? '' }}" data-inputmask-alias="datetime" data-inputmask-inputformat="dd-mm-yyyy" data-mask></td>
-            <td></td>
+            <td><input class="form-control" type="text" placeholder="WUL / 011 / X / 2020" name="termin_no_1" id="termin_no_1" value="{{ $termin->termin_no_1 ?? '' }}"></td>
         </tr>
         <tr>
             <td>2</td>
             <td>BA. Serah Terima Pertama (PPK)</td>
             <td><input class="form-control" type="text" name="termin_tgl_2" id="termin_tgl_2" value="{{ $termin->termin_tgl_2 ?? '' }}"  data-inputmask-alias="datetime" data-inputmask-inputformat="dd-mm-yyyy" data-mask></td>
-            <td><input class="form-control" type="text" name="termin_no_2" id="termin_no_2" value="{{ $termin->termin_no_2 ?? '' }}"></td>
+            <td><input class="form-control" type="text" placeholder="123456" name="termin_no_2" id="termin_no_2" value="{{ $termin->termin_no_2 ?? '' }}"></td>
         </tr>
         <tr>
             <td>3</td>
             <td>Lap. Kemajuan Pek. Perencanaan (Konsultan)</td>
             <td><input class="form-control" type="text" name="termin_tgl_3" id="termin_tgl_3" value="{{ $termin->termin_tgl_3 ?? '' }}" data-inputmask-alias="datetime" data-inputmask-inputformat="dd-mm-yyyy" data-mask></td>
-            <td></td>
+            <td><input class="form-control" type="text" placeholder="WUL / 011 / X / 2020" name="termin_no_3" id="termin_no_3" value="{{ $termin->termin_no_3 ?? '' }}"></td>
         </tr>
         <tr>
             <td>4</td>
             <td>Lap. Kemajuan Pek. Perencanaan (Konsultan)</td>
             <td><input class="form-control" type="text" name="termin_tgl_4" id="termin_tgl_4" value="{{ $termin->termin_tgl_4 ?? '' }}" data-inputmask-alias="datetime" data-inputmask-inputformat="dd-mm-yyyy" data-mask></td>
-            <td></td>
+            <td><input class="form-control" type="text" placeholder="WUL / 011 / X / 2020" name="termin_no_4" id="termin_no_4" value="{{ $termin->termin_no_4 ?? '' }}"></td>
         </tr>
         <tr>
             <td>5</td>

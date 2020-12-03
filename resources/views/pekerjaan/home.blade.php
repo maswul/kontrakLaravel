@@ -28,7 +28,7 @@
                     <h3 class="card-title">Daftar Pekerjaan</h3>
                     <div class="card-tools">
                         <a name="" id="" class="btn btn-primary btn-sm" href="{{ route('pekerjaan.baru') }}" role="button"><i
-                                class="fas fa-plus"></i></a>
+                                class="fas fa-plus"></i> Tambah</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -65,7 +65,7 @@
                                                 <a class="dropdown-item" href="{{ route('cetak.kontrak',['id'=>$item->id]) }}"><i class="fas fa-print"></i> Cetak Kontrak</a>
                                                 <a class="dropdown-item" href="{{ route('cetak.termin', ['id' => $item->id]) }}"><i class="fas fa-file-word"></i> Cetak
                                                     Termyn</a>
-                                                <a class="dropdown-item" href="#"><i class="fas fa-file-excel"></i> Cetak
+                                                <a class="dropdown-item" href="{{ route('cetak.ringkasan', ['id'=>$item->id]) }}"><i class="fas fa-file-excel"></i> Cetak
                                                     Ringkasan dan Pajak</a>
                                             @endunless
 
