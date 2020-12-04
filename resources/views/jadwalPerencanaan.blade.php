@@ -36,6 +36,11 @@
     <div class="col-md-12">
         <div class="card card-primary card-tabs">
             <div class="card-header p-0 pt-1">
+                <div class="card-tools">
+                    <div class="input-group input-group-sm">
+                        <a name="" id="btnTgl" class="btn btn-danger float-right" href="#" role="button">Tgl. template</a>
+                    </div>
+                </div>
                 <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
                     <li class="pt-2 px-2">
                         <h3 class="card-title">Buat Jadwal Baru</h3>
@@ -113,11 +118,78 @@
                 timer: 3000
             });
 
+
+
         //Datemask dd/mm/yyyy
         $('[data-mask]').inputmask()
 
         $("#simpan").click(function () {
             $("#dataForm").submit();
+        })
+
+        $("#btnTgl").click(function (){
+            //isi default tanggal
+            $("#tgl_0").val("09-10-2020");
+            $("#tgl_1").val("12-10-2020");
+            $("#tgl_2").val("12-10-2020");
+            $("#tgl_3").val("13-10-2020");
+            $("#tgl_4").val("14-10-2020");
+            $("#tgl_5").val("15-10-2020");
+            $("#tgl_6").val("16-10-2020");
+            $("#tgl_7").val("16-10-2020");
+            $("#tgl_8").val("19-10-2020");
+            $("#tgl_9").val("20-10-2020");
+            $("#tgl_10").val("21-10-2020");
+            $("#tgl_11").val("22-10-2020");
+            $("#tgl_12").val("22-10-2020");
+            $("#tgl_13").val("23-10-2020");
+            $("#tgl_14").val("23-10-2020");
+            $("#tgl_15").val("26-10-2020");
+            $("#tgl_16").val("27-10-2020");
+            $("#tgl_17").val("27-10-2020");
+            $("#tgl_18").val("27-10-2020");
+            $("#tgl_19").val("10-12-2020");
+
+
+            switch ($("#pekerjaan_tipe").val()) {
+
+                case "1":
+                    //jasa konsultansi
+                    break
+                case "2":
+                    //fisik
+                    $("#termin_tgl_1").val("09-12-2020");
+                    $("#termin_tgl_2").val("09-12-2020");
+                    $("#termin_tgl_3").val("09-12-2020");
+                    $("#termin_tgl_4").val("10-12-2020");
+                    $("#termin_tgl_5").val("11-12-2020");
+                    $("#termin_tgl_6").val("11-12-2020");
+                    $("#termin_tgl_7").val("11-12-2020");
+                    $("#termin_tgl_8").val("14-12-2020");
+                    break
+                case "3":
+                    //perencanaan
+                    $("#termin_tgl_1").val("27-10-2020");
+                    $("#termin_tgl_2").val("27-10-2020");
+                    $("#termin_tgl_3").val("27-10-2020");
+                    $("#termin_tgl_4").val("10-12-2020");
+                    $("#termin_tgl_5").val("10-12-2020");
+                    $("#termin_tgl_6").val("10-12-2020");
+                    $("#termin_tgl_7").val("11-12-2020");
+                    $("#termin_tgl_8").val("11-12-2020");
+                    $("#termin_tgl_9").val("14-12-2020");
+                    break
+                case "4":
+                    //pengawasan
+                    $("#termin_tgl_1").val("09-12-2020");
+                    $("#termin_tgl_2").val("10-12-2020");
+                    $("#termin_tgl_3").val("11-12-2020");
+                    $("#termin_tgl_4").val("11-12-2020");
+                    $("#termin_tgl_5").val("14-12-2020");
+                    $("#termin_tgl_6").val("15-12-2020");
+                    break
+
+            }
         })
 
     });

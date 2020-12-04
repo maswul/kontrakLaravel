@@ -217,7 +217,7 @@
                                 <div class="form-group">
                                     <label for="program">Tim Monitoring</label>
                                     <input type="text" class="form-control" id="nama_monitoring" name="nama_monitoring"
-                                           value="{{ $db->nama_monitoring ?? '' }}" >
+                                           value="{{ $db->nama_monitoring ?? '' }}" required="">
 
                                 </div>
                             </div>
@@ -227,33 +227,33 @@
                                 <div class="form-group">
                                     <label for="program">NIP Monitoring</label>
                                     <input type="text" class="form-control" id="nip_monitoring" name="nip_monitoring"
-                                           value="{{ $db->nip_monitoring ?? '' }}" >
+                                           value="{{ $db->nip_monitoring ?? '' }}" required="">
 
                                 </div>
                             </div>
                         </div>
                         <!-- Kegiatan -->
 
-                        <div class="form-group">
-                            <label for="kegiatan">Pengawas Pekerjaan</label>
+                            <div class="form-group">
+                                <label for="kegiatan">Pengawas Pekerjaan</label>
 
-                            <select name="perusahaan_pengawas" id="perusahaan_pengawas" class="form-control selectbs4">
-                                @foreach($datas as $data)
-                                    <option value="{{ $data->id }}">{{ $data->nama  }}</option>
-                                @endforeach
-                            </select>
-
-
-                        </div>
+                                <select name="perusahaan_pengawas" id="perusahaan_pengawas" class="form-control selectbs4">
+                                    @foreach($datas as $data)
+                                        <option value="{{ $data->id }}">{{ $data->nama  }}</option>
+                                    @endforeach
+                                </select>
 
 
-                        <div class="form-group text-center">
-                            <input type="hidden" name="pekerjaan_diawasi" id="pekerjaan_diawasi"
-                                   value="{{ $db->pekerjaan_diawasi ?? '' }}">
-                            <a name="" id="" class="btn btn-flat btn-primary" data-toggle="modal"
-                               data-target="#modelId" href="#"
-                               role="button">Tambah Pekerjaan Diawasi</a>
-                        </div>
+                            </div>
+
+
+                            <div class="form-group text-center">
+                                <input type="hidden" name="pekerjaan_diawasi" id="pekerjaan_diawasi"
+                                       value="{{ $db->pekerjaan_diawasi ?? '' }}">
+                                <a name="" id="" class="btn btn-flat btn-primary" data-toggle="modal"
+                                   data-target="#modelId" href="#"
+                                   role="button">Tambah Pekerjaan Diawasi</a>
+                            </div>
 
 
                     </div>
@@ -295,9 +295,10 @@
 
             var $awasi = $("#pekerjaan_diawasi");
             var data = $awasi.val().split(",")
-            $.each(data, function (i) {
-                if (data[i] !== "") {
-                    $("input:checkbox[value=" + data[i] + "]").prop('checked', true);
+            $.each(data, function (i){
+                if (data[i] !== "")
+                {
+                    $("input:checkbox[value=" + data[i] +"]").prop('checked', true);
                 }
             })
 

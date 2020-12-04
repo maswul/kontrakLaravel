@@ -24,12 +24,13 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered table-striped" id="data-table">
+                        <table class="table table-bordered table-striped text-sm" id="data-table">
                             <thead>
                             <tr>
                                 <th>Nama</th>
                                 <th>Direktur</th>
-                                <th>Alamat</th>
+                                <th>NPWP</th>
+                                <th>Rekening</th>
                                 <th>Kota</th>
                                 <th></th>
                             </tr>
@@ -203,13 +204,19 @@
                 serverSide: true,
                 "responsive": true,
                 "autoWidth": false,
+                "lengthMenu": [8, 15, 25, 50, 100],
+                "pageLength": 8,
+                "columnDefs": [
+                    {"className": "text-center", "targets": 5}
+                ],
 
                 ajax: "",
                 columns: [
 
                     {data: 'nama', name: 'nama'},
                     {data: 'direktur', name: 'direktur'},
-                    {data: 'alamat', name: 'alamat'},
+                    {data: 'npwp', name: 'npwp'},
+                    {data: 'rekening', name: 'rekening'},
                     {data: 'kota', name: 'kota'},
                     {data: 'action', name: 'action', orderable: false, searchable: false}
                 ]

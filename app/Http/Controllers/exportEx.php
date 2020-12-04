@@ -520,20 +520,22 @@ class exportEx extends Controller
         $minggu = $_19->diffInWeeks($_17);
 
         //TODO RUMUS DAPATKAN DATA PERUHAAN KONTRAKTOR
-        $dicari = ["perusahaan_pengawas" => $cv['id']];
-        $kontraktor = Pekerjaan::where($dicari)->get();
+        $diAwasi = $pekerjaan['pekerjaan_diawasi'];
         $data = array();
-        foreach ($kontraktor as $kons)
+        foreach(explode(',',$diAwasi) as $row)
         {
-            $id_peks = $kons->id;
-            $id_kons = $kons->perusahaan_id;
-            $data2 = array("kontraktor"=>Perusahaan::find($id_kons)->nama,
-                "kotraktor_17"=>Lelang::wherePekerjaanId($id_peks)->value('no_17'),
-                "kontraktor_17_tgl"=>Lelang::wherePekerjaanId($id_peks)->value('tgl_17'),
-                "kontraktor_alamat"=>Perusahaan::find($id_kons)->alamat);
-            array_push($data, $data2);
-
+            //print ("a=" . $row);
+            if (($row <> "")) {
+                $_peker = Pekerjaan::find($row);
+                $_perus = Perusahaan::find($_peker->perusahaan_id);
+                $data2 = array("kontraktor" => $_perus->nama,
+                    "kotraktor_17" => Lelang::wherePekerjaanId($row)->value('no_17'),
+                    "kontraktor_17_tgl" => Lelang::wherePekerjaanId($row)->value('tgl_17'),
+                    "kontraktor_alamat" => $_perus->alamat);
+                array_push($data, $data2);
+            }
         }
+
 
         $tpl = new TemplateProcessor($file);
 

@@ -18,9 +18,14 @@ class PerusahaanControlleer extends Controller
             return DataTables::of($data)->addIndexColumn()
                 ->addColumn('action', function ($row){
 
-                    $btn = '<div class="btn-group"><a href="javascript:void(0)" data-toggle="tooltip" title="Edit"  data-id="'.$row->id.'" data-original-title="Edit" class="btn btn-flat btn-xs bg-primary editPerusahaan">Edt</a>';
-                    $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip" title="Hapus"  data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-flat btn-xs bg-danger deletePerusahaan">Del</a>';
-                    $btn .= '</div>';
+                    $btn = '<button type="button" class="btn btn-social btn-flat btn-info btn-xs"
+                                            data-toggle="dropdown"><i class="fa fa-arrow-circle-down"></i> Pilih</button>';
+                    $btn .= '<div class="dropdown-menu"><a class="dropdown-item editPerusahaan" data-id="'.$row->id.'"  href="#"><i class="fas fa-edit"></i> Edit</a>
+                                            <a class="dropdown-item deletePekerjaan deletePerusahaan" data-id="'.$row->id.'" href="#"><i class="fas fa-trash" style="color: red"></i> Hapus</a></div>';
+
+                    //$btn = '<div class="btn-group"><a href="javascript:void(0)" data-toggle="tooltip" title="Edit"  data-id="'.$row->id.'" data-original-title="Edit" class="btn btn-flat btn-xs bg-primary editPerusahaan">Edt</a>';
+                    //$btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip" title="Hapus"  data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-flat btn-xs bg-danger deletePerusahaan">Del</a>';
+                    //$btn .= '</div>';
                     return $btn;
                 })->rawColumns(['action'])->make(true);
         }

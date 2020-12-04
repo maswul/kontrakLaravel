@@ -12,6 +12,8 @@
 @section('nav_pekerjaan', 'active')
 
 @section('Isi')
+    <!-- Button trigger modal -->
+
     <div class="row">
         <div class="col">
             @if (session('pesan'))

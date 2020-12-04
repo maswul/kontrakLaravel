@@ -38,6 +38,7 @@ class CPekerjaan extends Controller
             }
 
             $data['db'] = Pekerjaan::find($id);
+            $data['dbs'] = Pekerjaan::whereTipe(2)->latest()->get(); //untuk list fisik
             $data['datas'] = Perusahaan::latest()->get();
 
             return view('pekerjaan.tambah', $data);
@@ -47,7 +48,8 @@ class CPekerjaan extends Controller
     public function tambah() {
             $data['title'] = "Tambah Pekerjaan";
             $data['datas'] = Perusahaan::latest()->get();
-            return view('pekerjaan.tambah', $data);
+            $data['dbs'] = Pekerjaan::whereTipe(2)->latest()->get();
+         return view('pekerjaan.tambah', $data);
     }
 
     public function hapus(Request $request)
