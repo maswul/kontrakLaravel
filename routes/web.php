@@ -8,6 +8,7 @@ use App\Http\Controllers\CetakController;
 use App\Http\Controllers\CPekerjaan;
 use App\Http\Controllers\exportEx;
 use App\Http\Controllers\LelangController;
+use App\Models\Pekerjaan;
 
 
 /*
@@ -29,6 +30,20 @@ Route::get('/', function () {
 Route::resource('perusahaan', PerusahaanControlleer::class);
 
 Route::resource('pekerjaan', PekerjaanController::class);
+
+Route::get('pekerjaans/{id}/data.html', function ($id) {
+    $db = Pekerjaan::wherePerusahaanPengawas($id)->get()->toArray();
+    $temp = '';
+    foreach ($db as $item)
+    {
+        $temp .= '<tr>';
+        $temp .= '<td><input value="'. $item['id']. '" data-id="'. $item['id'].'" type="checkbox"></td>';
+        $temp .= '<td>' . $item['pekerjaan'] . '</td>';
+        $temp .= '<td>' . getPerusahaan($item['perusahaan_id']) . '</td>';
+        $temp .= '</tr>';
+    }
+    return $temp;
+})->name('pekerjaan.diawasi');
 
 Route::resource('jadwal', Jadwal::class);
 

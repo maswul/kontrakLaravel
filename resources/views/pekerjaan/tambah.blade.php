@@ -35,25 +35,27 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <table class="table table-hover text-sm" id="data-table">
-                                <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Pekerjaan</th>
-                                    <th>Kontraktor</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($dbs as $item)
+                            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                <table class="table table-hover text-sm mb-0 table-responsive" style="max-height: 400px" id="data-table">
+                                    <thead>
                                     <tr>
-                                        <td><input value="{{$item->id}}" data-id="{{$item->id}}" type="checkbox"></td>
-                                        <td>{{$item->pekerjaan}}</td>
-                                        <td>{{getPerusahaan($item->perusahaan_id)}}</td>
+                                        <th></th>
+                                        <th>Pekerjaan</th>
+                                        <th>Kontraktor</th>
                                     </tr>
-                                @endforeach
+                                    </thead>
+                                    <tbody>
+                                    @foreach($dbs as $item)
+                                        <tr>
+                                            <td><input value="{{$item->id}}" data-id="{{$item->id}}" type="checkbox"></td>
+                                            <td>{{$item->pekerjaan}}</td>
+                                            <td>{{getPerusahaan($item->perusahaan_id)}}</td>
+                                        </tr>
+                                    @endforeach
 
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -250,8 +252,7 @@
                         <div class="form-group text-center">
                             <input type="hidden" name="pekerjaan_diawasi" id="pekerjaan_diawasi"
                                    value="{{ $db->pekerjaan_diawasi ?? '' }}">
-                            <a name="" id="" class="btn btn-flat btn-primary" data-toggle="modal"
-                               data-target="#modelId" href="#"
+                            <a name="" id="tambah-awasi" class="btn btn-flat btn-primary" href="#"
                                role="button">Tambah Pekerjaan Diawasi</a>
                         </div>
 
@@ -285,21 +286,36 @@
             $("#penawaran").inputmask('currency', {autoUnmask: true});
             $("#nego").inputmask('currency', {autoUnmask: true});
 
-            $('#data-table').DataTable({
-                select: {
-                    style: 'multi'
-                }
-            });
+            /*var table = $('#data-table').DataTable({
+                "scrollY": "300px",
+                "scrollCollapse": true,
+                "paging": false,
+                "autoWidth": true,
+                "order": [[ 1, "asc" ]]
+            });*/
+            //! TODO: Fungsi sudah fix dan bagus
+            $("#tambah-awasi").click(function(e){
+                e.preventDefault();
+                var alamat = "{{ route('pekerjaan.diawasi', ":id")}}";
+                alamat = alamat.replace(":id", $("#perusahaan_id").val())
+                $.get(alamat, function(data){
+                    $('#data-table tbody').html(data);
+                    reFresh();
+                });
+                $("#modelId").modal('show');
+            })
 
             //init untuk perusahaan diawasi
+            function reFresh(){
+                var $awasi = $("#pekerjaan_diawasi");
+                var data = $awasi.val().split(",")
+                $.each(data, function (i) {
+                    if (data[i] !== "") {
+                        $("input:checkbox[value=" + data[i] + "]").prop('checked', true);
+                    }
+                })
+            }
 
-            var $awasi = $("#pekerjaan_diawasi");
-            var data = $awasi.val().split(",")
-            $.each(data, function (i) {
-                if (data[i] !== "") {
-                    $("input:checkbox[value=" + data[i] + "]").prop('checked', true);
-                }
-            })
 
 
             $("#btnmdlSave").click(function () {
